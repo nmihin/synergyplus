@@ -1,80 +1,122 @@
-import React, { useEffect } from 'react';
-import mapboxgl from 'mapbox-gl'; // Import Mapbox GL JS
-import '../assets/styles.css'; // Assuming you're using the same CSS file for styling
+import React, { useEffect, useState } from 'react';
+import mapboxgl from 'mapbox-gl';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/styles.css';
 
-// Set the Mapbox access token (you can also place this in an environment variable for security)
 mapboxgl.accessToken = 'pk.eyJ1IjoibGltYm83NzciLCJhIjoiY2pqZ3Q4b2I0MG1keDN2bGcxMnZkeHpwYyJ9.xzM2vWikDaCZyqP_yt7VVg';
 
 function Map() {
+  const [map, setMap] = useState(null);
+  const [layers, setLayers] = useState([
+    { id: 'roads', name: 'Roads', visible: true },
+    { id: 'railways', name: 'Railways', visible: true },
+    { id: 'pollution', name: 'Pollution', visible: true },
+  ]);
+
   useEffect(() => {
     // Initialize the map when the component is mounted
-    const map = new mapboxgl.Map({
-      container: 'map', // The id of the HTML element to render the map
-      style: 'mapbox://styles/mapbox/light-v10', // Set gray/white style
-      center: [15.2, 45.1], // Center the map on Croatia (Longitude, Latitude)
-      zoom: 7, // Set zoom level
+    const mapInstance = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [15.2, 45.1],
+      zoom: 7,
     });
 
-    // Add custom layers using the tilesets provided
-    map.on('load', () => {
-      // Add first tileset
-      map.addSource('tileset-1', {
-        type: 'raster',
-        tiles: [
-          'https://api.mapbox.com/styles/v1/limbo777/4s9h2zhx/tiles/{z}/{x}/{y}?access_token=' + mapboxgl.accessToken,
-        ],
-        tileSize: 256,
-      });
-      map.addLayer({
-        id: 'tileset-1',
-        type: 'raster',
-        source: 'tileset-1',
+    mapInstance.on('load', () => {
+      // Add map layers
+      mapInstance.addLayer({
+        id: 'roads',
+        type: 'line',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.4s9h2zhx',
+        },
+        'source-layer': 'europe-road-2vsqhc',
         paint: {
-          'raster-opacity': 0.8, // Adjust the opacity of the tileset if needed
+          'line-color': '#111',
+          'line-width': 2,
         },
       });
 
-      // Add second tileset
-      map.addSource('tileset-2', {
-        type: 'raster',
-        tiles: [
-          'https://api.mapbox.com/styles/v1/limbo777/aqisum0b/tiles/{z}/{x}/{y}?access_token=' + mapboxgl.accessToken,
-        ],
-        tileSize: 256,
-      });
-      map.addLayer({
-        id: 'tileset-2',
-        type: 'raster',
-        source: 'tileset-2',
+      mapInstance.addLayer({
+        id: 'railways',
+        type: 'line',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.aqisum0b',
+        },
+        'source-layer': 'europe-rail-road-044x6d',
         paint: {
-          'raster-opacity': 0.8, // Adjust opacity as needed
+          'line-color': '#E1E2DB',
+          'line-width': 2,
         },
       });
 
-      // Add third tileset
-      map.addSource('tileset-3', {
-        type: 'raster',
-        tiles: [
-          'https://api.mapbox.com/styles/v1/limbo777/2ydd5w3k/tiles/{z}/{x}/{y}?access_token=' + mapboxgl.accessToken,
-        ],
-        tileSize: 256,
-      });
-      map.addLayer({
-        id: 'tileset-3',
-        type: 'raster',
-        source: 'tileset-3',
+      mapInstance.addLayer({
+        id: 'pollution',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.2ydd5w3k',
+        },
+        'source-layer': 'worldwide-pollution-do9oi2',
         paint: {
-          'raster-opacity': 0.8, // Adjust opacity as needed
+          'circle-color': '#006acc',
+          'circle-radius': 4,
+        },
+        layout: {
+          visibility: 'visible',
         },
       });
     });
 
-    // Cleanup the map instance on component unmount
-    return () => map.remove();
+    setMap(mapInstance);
+
+    return () => mapInstance.remove();
   }, []);
 
+  const toggleLayer = (layerId) => {
+    if (map) {
+      const visibility = map.getLayoutProperty(layerId, 'visibility');
+      map.setLayoutProperty(layerId, 'visibility', visibility === 'visible' ? 'none' : 'visible');
+
+      // Update the layer visibility state
+      setLayers((prev) =>
+        prev.map((layer) =>
+          layer.id === layerId ? { ...layer, visible: !layer.visible } : layer
+        )
+      );
+    }
+  };
+
   return (
-    <div id="map" style={{ width: '100%', height: '800px' }}></div> // Map container
+    <div className="relative">
+      <div id="map" style={{ width: '100%', height: '600px' }}></div>
+
+      {/* Layer control panel */}
+      <div
+        className="absolute top-4 right-4 bg-white shadow-lg rounded-md p-4"
+        style={{ width: '250px' }}
+      >
+        <h5 className="font-bold mb-3">Layers</h5>
+        <div>
+          {layers.map((layer) => (
+            <div key={layer.id} className="form-check mb-2">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id={layer.id}
+                checked={layer.visible}
+                onChange={() => toggleLayer(layer.id)}
+              />
+              <label className="form-check-label" htmlFor={layer.id}>
+                {layer.name}
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
