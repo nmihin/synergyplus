@@ -5,7 +5,7 @@ import Map from './Map';
 function Content() {
   return (
     <main className="App-content">
-      <h1>Welcome to SynergyPlus</h1>
+      <h1>Dobrodošli u SynergyPlus</h1>
       <Map />
     </main>
   );

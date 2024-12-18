@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles.css';
 
@@ -8,13 +9,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibGltYm83NzciLCJhIjoiY2pqZ3Q4b2I0MG1keDN2bGcxM
 function Map() {
   const [map, setMap] = useState(null);
   const [layers, setLayers] = useState([
-    { id: 'roads', name: 'Roads', visible: true },
-    { id: 'railways', name: 'Railways', visible: true },
-    { id: 'pollution', name: 'Pollution', visible: true },
+    { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
+    { id: 'railways', name: 'Željeznica', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
+    { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
   ]);
 
   useEffect(() => {
-    // Initialize the map when the component is mounted
     const mapInstance = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
@@ -23,7 +23,6 @@ function Map() {
     });
 
     mapInstance.on('load', () => {
-      // Add map layers
       mapInstance.addLayer({
         id: 'roads',
         type: 'line',
@@ -36,6 +35,9 @@ function Map() {
           'line-color': '#111',
           'line-width': 2,
         },
+        layout: {
+          visibility: 'none',
+        },
       });
 
       mapInstance.addLayer({
@@ -47,11 +49,14 @@ function Map() {
         },
         'source-layer': 'europe-rail-road-044x6d',
         paint: {
-          'line-color': '#E1E2DB',
+          'line-color': '#1E66A8',
           'line-width': 2,
         },
+        layout: {
+          visibility: 'none',
+        },
       });
-
+      
       mapInstance.addLayer({
         id: 'pollution',
         type: 'circle',
@@ -65,12 +70,12 @@ function Map() {
           'circle-radius': 4,
         },
         layout: {
-          visibility: 'visible',
+          visibility: 'none',
         },
       });
-    });
 
-    setMap(mapInstance);
+      setMap(mapInstance);
+    });
 
     return () => mapInstance.remove();
   }, []);
@@ -80,7 +85,6 @@ function Map() {
       const visibility = map.getLayoutProperty(layerId, 'visibility');
       map.setLayoutProperty(layerId, 'visibility', visibility === 'visible' ? 'none' : 'visible');
 
-      // Update the layer visibility state
       setLayers((prev) =>
         prev.map((layer) =>
           layer.id === layerId ? { ...layer, visible: !layer.visible } : layer
@@ -88,6 +92,15 @@ function Map() {
       );
     }
   };
+
+  // Group layers by type
+  const groupedLayers = layers.reduce((acc, layer) => {
+    if (!acc[layer.type]) {
+      acc[layer.type] = [];
+    }
+    acc[layer.type].push(layer);
+    return acc;
+  }, {});
 
   return (
     <div className="relative">
@@ -98,20 +111,24 @@ function Map() {
         className="absolute top-4 right-4 bg-white shadow-lg rounded-md p-4"
         style={{ width: '250px' }}
       >
-        <h5 className="font-bold mb-3">Layers</h5>
         <div>
-          {layers.map((layer) => (
-            <div key={layer.id} className="form-check mb-2">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id={layer.id}
-                checked={layer.visible}
-                onChange={() => toggleLayer(layer.id)}
-              />
-              <label className="form-check-label" htmlFor={layer.id}>
-                {layer.name}
-              </label>
+          {Object.keys(groupedLayers).map((type) => (
+            <div key={type}>
+              <h6 className="layer-type-title">{groupedLayers[type][0].typeName}</h6>
+              {groupedLayers[type].map((layer) => (
+                <div key={layer.id} className="form-check mb-2 d-flex align-items-center">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id={layer.id}
+                    checked={layer.visible}
+                    onChange={() => toggleLayer(layer.id)}
+                  />
+                  <label className="form-check-label ms-2" htmlFor={layer.id}>
+                    {layer.name}
+                  </label>
+                </div>
+              ))}
             </div>
           ))}
         </div>

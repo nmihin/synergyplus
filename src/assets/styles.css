@@ -70,3 +70,30 @@
   .mapboxgl-ctrl-bottom-right {
     display:none;
   }
+
+  .form-check {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-check-input {
+    margin-right: 10px; /* Adjusts space between checkbox and label */
+  }
+  
+  .layer-type-title {
+    text-align: left; /* Align the title to the left */
+    font-weight: bold; /* Make the title bold */
+    margin-bottom: 10px; /* Space between the title and the layers */
+    display: block; /* Ensure it spans the full width */
+    width: 100%; /* Ensure the title takes the full width of the container */
+  }
+  
+  .layer-type-title::after {
+    content: ''; /* Adds a line after the title */
+    display: block;
+    width: 100%; /* Line spans the full width */
+    height: 2px;
+    background-color: #000; /* Line color, change as necessary */
+    margin-top: 5px; /* Space between the title and the line */
+  }
+  
