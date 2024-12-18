@@ -1,39 +1,82 @@
 import React, { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import translations from '../locales/translations.json'; 
+import { useTranslation } from 'react-i18next'; // Keep the import for useTranslation
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles.css';
+import { OpenAI } from 'openai';
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      hr: {
-        translation: translations,
-      },
-    },
-    lng: 'hr', 
-    keySeparator: false,
-    interpolation: {
-      escapeValue: false,
-    },
-  });
-
-mapboxgl.accessToken = 'pk.eyJ1IjoibGltYm83NzciLCJhIjoiY2pqZ3Q4b2I0MG1keDN2bGcxMnZkeHpwYyJ9.xzM2vWikDaCZyqP_yt7VVg';
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
+const openai = new OpenAI({
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY, 
+  dangerouslyAllowBrowser: true, 
+});
 
 function Map() {
   const [map, setMap] = useState(null);
+  const [pollutionData, setPollutionData] = useState([]);
   const [layers, setLayers] = useState([
     { id: 'counties', name: 'Županije', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'railways', name: 'Željeznice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
   ]);
+  const { t } = useTranslation(); // Use the hook to get translations
+  const getCategoryColor = (category) => {
+    switch (category?.toLowerCase()) {
+      case 'good':
+        return 'bg-green-500'; 
+      case 'moderate':
+        return 'bg-yellow-500';
+      case 'bad':
+        return 'bg-red-500'; 
+      default:
+        return 'bg-gray-400'; 
+    }
+  };
 
   useEffect(() => {
+    const fetchPollutionData = async () => {
+      try {
+        // Construct the API URL with refine query for "Croatia"
+        const url = '/api/explore/v2.1/catalog/datasets/worldwide-pollution/records?limit=20&refine=country%3A%22Croatia%22';
+    
+        // Fetch data from the OpenDataSoft API
+        const response = await fetch(url, {
+          method: 'GET', // Use GET method
+          headers: {
+            'Content-Type': 'application/json', // Ensure the content type is JSON
+            // If authentication is required, add your API key or token here:
+            // 'Authorization': `Bearer YOUR_API_KEY`
+          },
+        });
+    
+        // Check if response is okay (status 200)
+        if (!response.ok) {
+          // Log and throw error if response status is not OK
+          const errorText = await response.text();  // Read the error response
+          console.error('Error fetching pollution data:', errorText);
+          throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+        }
+    
+        // Parse the JSON data from the response
+        const data = await response.json();
+    
+        // Log the fetched data to verify
+        console.log(data);
+    
+        // Store the fetched records in state
+        setPollutionData(data.records); // Assuming the 'records' field contains the pollution data
+      } catch (error) {
+        // Handle any errors that occur during the fetch
+        console.error('Error fetching pollution data:', error);
+      }
+    };
+    
+    
+
+    fetchPollutionData();
+
     const mapInstance = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
@@ -59,7 +102,6 @@ function Map() {
           visibility: 'none',
         },
       });
-      
 
       mapInstance.addLayer({
         id: 'roads',
@@ -124,20 +166,42 @@ function Map() {
           const properties = e.features[0].properties;
           const coordinates = e.features[0].geometry.coordinates.slice();
 
-          console.log(e)
-
-          // Set the popup content
-          popup
-            .setLngLat(coordinates)
-            .setHTML(`
-              <h6>Podaci onečišćenja</h6>
-              <p><strong>Glavni onečišćivać:</strong> ${properties.dominant || 'N/A'}</p>
-              <p><strong>CO razina:</strong> ${properties.category_co || 'N/A'} - ${properties.value_co || 'N/A'}</p>
-              <p><strong>NO2 razina:</strong> ${properties.category_no2 || 'N/A'} - ${properties.value_no2 || 'N/A'}</p>
-              <p><strong>O3 razina:</strong> ${properties.category_o3 || 'N/A'} - ${properties.value_o3 || 'N/A'}</p>
-              <p><strong>Razina onečišćenja (PM2.5):</strong> ${properties.value_pm5 || 'N/A'} - ${properties.category_pm25 || 'N/A'}</p>
-            `)
-            .addTo(mapInstance);
+          popup.setLngLat(coordinates)
+          .setHTML(`
+            <h6 class="text-lg font-semibold text-left">${t('pollution.title')}</h6>
+            <p class="text-left mb-1">
+              <strong>${t('pollution.main_pollutant')}:</strong> ${properties.dominant || 'N/A'}
+            </p>
+            <p class="text-left mb-1">
+              <strong>${t('pollution.co_level')}:</strong> 
+              <span class="flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full mr-2 ${getCategoryColor(properties.category_co)}"></span>
+                ${t(`pollution.categories.${properties.category_co?.toLowerCase()}`) || 'N/A'} - ${properties.value_co || 'N/A'}
+              </span>
+            </p>
+            <p class="text-left mb-1">
+              <strong>${t('pollution.no2_level')}:</strong> 
+              <span class="flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full mr-2 ${getCategoryColor(properties.category_no2)}"></span>
+                ${t(`pollution.categories.${properties.category_no2?.toLowerCase()}`) || 'N/A'} - ${properties.value_no2 || 'N/A'}
+              </span>
+            </p>
+            <p class="text-left mb-1">
+              <strong>${t('pollution.o3_level')}:</strong> 
+              <span class="flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full mr-2 ${getCategoryColor(properties.category_o3)}"></span>
+                ${t(`pollution.categories.${properties.category_o3?.toLowerCase()}`) || 'N/A'} - ${properties.value_o3 || 'N/A'}
+              </span>
+            </p>
+            <p class="text-left mb-1">
+              <strong>${t('pollution.pm25_level')}:</strong> 
+              <span class="flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full mr-2 ${getCategoryColor(properties.category_pm25)}"></span>
+                ${properties.value_pm5 || 'N/A'} - ${t(`pollution.categories.${properties.category_pm25?.toLowerCase()}`) || 'N/A'}
+              </span>
+            </p>
+          `)      
+          .addTo(mapInstance);
 
           // Change the cursor style
           mapInstance.getCanvas().style.cursor = 'pointer';
@@ -154,7 +218,7 @@ function Map() {
     });
 
     return () => mapInstance.remove();
-  }, []);
+  }, [t]);
 
   const toggleLayer = (layerId) => {
     if (map) {

@@ -4,7 +4,7 @@ import '../assets/styles.css';
 function Footer() {
   return (
     <footer className="App-footer">
-      <p>&copy; 2024 SynergyPlus. All rights reserved.</p>
+      <p>&copy; 2024 SynergyPlus.</p>
     </footer>
   );
 }

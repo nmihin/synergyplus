@@ -2,10 +2,23 @@
     "counties": "Županije",
     "roads": "Ceste",
     "railways": "Željeznice",
-    "pollution": "Onečišćenje",
     "mainPollutant": "Glavni onečišćivač",
     "coLevel": "CO razina",
     "no2Level": "NO2 razina",
     "o3Level": "O3 razina",
-    "pm25Level": "PM2.5 razina"
-}
+    "pm25Level": "PM2.5 razina",
+    "pollution": {
+      "title": "Podaci onečišćenja",
+      "main_pollutant": "Glavni onečišćivač",
+      "co_level": "CO razina",
+      "no2_level": "NO2 razina",
+      "o3_level": "O3 razina",
+      "pm25_level": "Razina onečišćenja (PM2.5)",
+      "categories": {
+        "good": "Dobro",
+        "moderate": "Umjereno",
+        "bad": "Loše"
+      }
+    }
+  }
+  
