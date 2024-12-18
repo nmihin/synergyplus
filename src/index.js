@@ -8,6 +8,8 @@ import './index.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+document.title = "Synergyplus";
+
 root.render(
   <React.StrictMode>
     <App />

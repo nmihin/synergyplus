@@ -1,0 +1,11 @@
+{
+    "counties": "Županije",
+    "roads": "Ceste",
+    "railways": "Željeznice",
+    "pollution": "Onečišćenje",
+    "mainPollutant": "Glavni onečišćivač",
+    "coLevel": "CO razina",
+    "no2Level": "NO2 razina",
+    "o3Level": "O3 razina",
+    "pm25Level": "PM2.5 razina"
+}
