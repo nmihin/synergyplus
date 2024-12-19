@@ -13,7 +13,7 @@
       "co_level": "CO razina",
       "no2_level": "NO2 razina",
       "o3_level": "O3 razina",
-      "pm25_level": "Razina onečišćenja (PM2.5)",
+      "pm25_level": "PM2.5 razina",
       "categories": {
         "good": "Dobro",
         "moderate": "Umjereno",

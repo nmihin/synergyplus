@@ -97,3 +97,6 @@
     margin-top: 5px; /* Space between the title and the line */
   }
   
+  .mapboxgl-popup-close-button {
+    display: none;
+  }
