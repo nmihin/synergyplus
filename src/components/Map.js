@@ -14,6 +14,7 @@ function Map() {
     { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'railways', name: 'Željeznice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
+    { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
   ]);
   const { t } = useTranslation();
   const [pollutionData, setPollutionData] = useState(null);
@@ -118,11 +119,51 @@ function Map() {
         },
       });
 
+      // Add the industry layer with popups
+      mapInstance.addLayer({
+        id: 'industry',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.cg3arnwd',
+        },
+        'source-layer': 'cementare-3vo6f9',
+        paint: {
+          'circle-color': '#00C0FD',
+          'circle-radius': 4,
+        },
+        layout: {
+          visibility: 'none',
+        },
+      });
+
+      // Add a click event listener for the industry layer to show popups
+      mapInstance.on('click', 'industry', (e) => {
+        const features = mapInstance.queryRenderedFeatures(e.point, {
+          layers: ['industry'],
+        });
+
+        if (features.length > 0) {
+          const feature = features[0];
+          const { name, address, company, color } = feature.properties;
+
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+              <h6 class="text-lg font-semibold">${name}</h6>
+              <p><strong>${t('industry.address')}:</strong> ${address}</p>
+              <p><strong>${t('industry.company')}:</strong> ${company}</p>
+              <p><strong>${t('industry.color')}:</strong> <span style="color: ${color};">${color}</span></p>
+            `)
+            .addTo(mapInstance);
+        }
+      });
+
       setMap(mapInstance);
     });
 
     return () => mapInstance.remove();
-  }, []);
+  }, [pollutionData, t]);
 
   const toggleLayer = (layerId) => {
     setLayers((prev) =>
@@ -188,7 +229,7 @@ function Map() {
                       ${t(`pollution.categories.${category_pm25.toLowerCase()}`)} - ${value_pm5 || 'N/A'}
                     </span>
                   </p>
-                `)      
+                `)         
               );
             return marker;
           });
@@ -215,7 +256,6 @@ function Map() {
       }
     }
   };
-
 
   // Group layers by type
   const groupedLayers = layers.reduce((acc, layer) => {
