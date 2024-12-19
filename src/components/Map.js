@@ -13,6 +13,7 @@ function Map() {
     { id: 'counties', name: 'Županije', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'railways', name: 'Željeznice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
+    { id: 'chargingstations', name: 'Punionice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
   ]);
@@ -119,6 +120,24 @@ function Map() {
         },
       });
 
+      // Add the charging stations layer with popups
+      mapInstance.addLayer({
+        id: 'chargingstations',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.2j7np18a',
+        },
+        'source-layer': 'Geoportal_elektricne_punionic-7m6rfn',
+        paint: {
+          'circle-color': '#00C0FD',
+          'circle-radius': 4,
+        },
+        layout: {
+          visibility: 'none',
+        },
+      });
+
       // Add the industry layer with popups
       mapInstance.addLayer({
         id: 'industry',
@@ -153,7 +172,6 @@ function Map() {
               <h6 class="text-lg font-semibold">${name}</h6>
               <p><strong>${t('industry.address')}:</strong> ${address}</p>
               <p><strong>${t('industry.company')}:</strong> ${company}</p>
-              <p><strong>${t('industry.color')}:</strong> <span style="color: ${color};">${color}</span></p>
             `)
             .addTo(mapInstance);
         }

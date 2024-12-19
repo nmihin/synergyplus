@@ -19,6 +19,10 @@
         "moderate": "Umjereno",
         "bad": "Loše"
       }
+    },
+    "industry": {
+      "address": "Adresa",
+      "company": "Tvrtka"
     }
   }
   
