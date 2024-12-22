@@ -126,9 +126,9 @@ function Map() {
         type: 'circle',
         source: {
           type: 'vector',
-          url: 'mapbox://limbo777.6gxzbgyk',
+          url: 'mapbox://limbo777.cjmt8o21',
         },
-        'source-layer': 'punionice-hrvatske-mapbox-bot6vl',
+        'source-layer': 'punionice-hrvatske-mapbox-49dww0',
         paint: {
           'circle-color': '#00C0FD',
           'circle-radius': 4,

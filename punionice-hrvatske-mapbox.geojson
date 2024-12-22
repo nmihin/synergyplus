@@ -64314,6 +64314,4926 @@
         "under_repair": false,
         "url": "http://api.plugshare.com/view/location/128461"
       }
-    }
+    },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.540548,
+            45.227897
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Vladimira Nazora 25, 44430, Hrvatska Kostajnica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 236752,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Hrvatska Kostajnica (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 512646,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1282508,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/236752"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.091872,
+            45.339169
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Hrvatska ul. 6, 44400, Glina, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 272491,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Hrvatska ulica (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 601686,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1669741,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/272491"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.971174,
+            45.294501
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Opatovaina 13, 44415, Topusko, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 237728,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Top terme Topusko (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 515081,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1290350,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/237728"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.774253,
+            45.482745
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg kralja Tomislava 10, 44320, Kutina, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 115445,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Kutina",
+          "score": 5,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 450038,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 886742,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 2643358,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": true,
+          "url": "http://api.plugshare.com/view/location/115445"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.992223,
+            45.486203
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Pokupsko 25, 10414, Pokupsko, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 90871,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Općina Pokupsko",
+          "score": 3.2,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1809319,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3977747,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3977748,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/90871"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.220165,
+            45.695556
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Drnek, Drnek‎ Zagrebačka županija‎ 10411, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2",
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 122998,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Općina ORLE",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 217889,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 462301,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 217890,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 462302,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/122998"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.77786983549595,
+            45.47600365219418
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Kneza Ljudevita Posavskog 32, 44320, Kutina, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 634642,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Kaufland Kutina",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1693395,
+              "network_id": 1071,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3737845,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1693396,
+              "network_id": 1071,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3737846,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/634642"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.415411,
+            45.71052
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Franje Jurinca 27, 10310, Ivanić Grad, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 232351,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Petrol Ivanić Grad (planned) (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 506717,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 1263895,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1263896,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 1263897,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/232351"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.381014,
+            45.258625
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg kralja Tomislava 1Z, 35400, Nova Gradiška, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 175561,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "ELEN Nova Gradiška",
+          "score": 8.6,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 359637,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 649266,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 1255449,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1255450,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/175561"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.609663,
+            45.338811
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Krnjak Post Office, 47242, Krnjak, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 427873,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Krnjak (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1038852,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2665460,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/427873"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.696792,
+            45.325372
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg Stjepana Radića 1, 47220 Vojnić",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 265719,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Općina Vojnić",
+          "score": 10,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 583498,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1610829,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/265719"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.912809424102306,
+            45.57350703809189
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Kapelica 11, 43280, Kapelica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 635638,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Vida",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1696067,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3743083,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/635638"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.83542,
+            45.313057
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Plesmo 26, 44325, Krapje, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 236756,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Ekoetno Selo Strug",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 512677,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1282539,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1283954,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/236756"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.37923,
+            45.485054
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ljudevita Gaja, 44000‎ Sisak, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 93295,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Grad Sisak",
+          "score": 4.2,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 149010,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 358060,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 358061,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 358062,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/93295"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.359903,
+            45.496177
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Zagrebačka 49/E, Sisak, 44000, Hrvatska",
+          "available_station_count": 0,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/AR.png",
+          "icon_type": "AR",
+          "id": 323392,
+          "in_use_station_count": 0,
+          "is_fast_charger": true,
+          "name": "has.to.be gmbh",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 955664,
+              "network_id": 1107,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2531945,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": "OUTOFORDER"
+                }
+              ]
+            },
+            {
+              "id": 955665,
+              "network_id": 1107,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 2531946,
+                  "kilowatts": 25,
+                  "power": 0,
+                  "status": "OUTOFORDER"
+                }
+              ]
+            }
+          ],
+          "under_repair": true,
+          "url": "http://api.plugshare.com/view/location/323392"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.500520552112853,
+            45.65803848222383
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "MG52+J6, 10314, Križ, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 624840,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Lidl LDC",
+          "station_count": 3,
+          "stations": [
+            {
+              "id": 1666087,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3675076,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1666088,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3675077,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1666089,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3675078,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3675079,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/624840"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.554534,
+            45.49386
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg Josipa Jurja Strossmayera 8B, 47000, Karlovac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 69942,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "City Major Office",
+          "score": 5.1,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 99161,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 242708,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/69942"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.529298,
+            45.632943
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Česmanska ul. 47, 10315, Okešinec, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 348319,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Oldtimer Doctor",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 827404,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2335111,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/348319"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.589417452724037,
+            45.10092447954885
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Plitvička ul. 73, 47240, Slunj, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 581897,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Restaurant Feniks (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1512018,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3419401,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/581897"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.584827925350572,
+            45.11507440908078
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Školska ul. 1, 47240, Slunj, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 581895,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Greenway Slunj DC (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1512011,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3419391,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3419392,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/581895"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.748875566270456,
+            45.68461811910882
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Kolodvorska ul 74, 10450, Klinča Sela, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 481673,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Tomica Benz",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1808191,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3975262,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3975263,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/481673"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.736104,
+            45.691934
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Karlovačka ul. 32, 10450, Klinča Sela, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2",
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 166073,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Općina Klinča Sela",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 334034,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 616587,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 334035,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 616588,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/166073"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.210521,
+            45.594408
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Domobranska ulica 1, Daruvar, 43500, Hrvatska",
+          "available_station_count": 1,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 323390,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "has.to.be gmbh",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 955628,
+              "network_id": 1107,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2531906,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": "AVAILABLE"
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/323390"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.588553,
+            45.12038
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Gojka Šuška 2, 47240, Slunj, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 308241,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Restoran Ambar",
+          "score": 7.5,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 716357,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2151342,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/308241"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.20013301819563,
+            45.59323710735699
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Augusta Šenoe 2b, 43500, Daruvar, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 500097,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Qelo @ Stop Shop",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1289726,
+              "network_id": 1397,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3039981,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1289727,
+              "network_id": 1397,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3039982,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/500097"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.64347,
+            45.662882
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trešnjevka 3, 10450, Jaska, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 463004,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Jaska Park",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1162387,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2842366,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 2844835,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/463004"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.371005,
+            45.490466
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Rimska ul. 26, 44000, Sisak, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 341108,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "ELEN Sisak",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 806269,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2307066,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 806270,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2307067,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/341108"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.07967,
+            45.711943
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg Kralja Tomislava 22, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 222647,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Park I Milenijski Križ",
+          "score": 6.3,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1809682,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3978471,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 3978472,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3978473,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/222647"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.070425808429718,
+            45.71165148033383
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Matice hrvatske 52, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 558626,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "EMSO - VG",
+          "score": 9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1797982,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3954173,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 3954174,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/558626"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.191666,
+            45.439258
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Augusta Cesarca 2A, 34550, Pakrac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 285184,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Hotel Pakrac",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 621711,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1790851,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/285184"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.27662,
+            45.443133
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Braće Hanžek 1, 44250, Petrinja, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 239446,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Petrinja (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 519035,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1306356,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/239446"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.077082,
+            45.720318
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Podložnica ul. 17, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 391510,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "INTERSPAR Hipermarket",
+          "score": 7.8,
+          "station_count": 4,
+          "stations": [
+            {
+              "id": 944824,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2514979,
+                  "kilowatts": 11,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 944825,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2514980,
+                  "kilowatts": 11,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 944826,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2514981,
+                  "kilowatts": 11,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 945640,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2515996,
+                  "kilowatts": 11,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/391510"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.97590470314026,
+            45.33752795794971
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. kralja Tomislava 27, 44330, Novska, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 630015,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Apartmani Dabrović",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1681248,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3710299,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/630015"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.65284341573715,
+            45.66011980419658
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Nikole Tesle 34, 10450 Jastrebarsko, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 640304,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Supernova (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1710301,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3770878,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3770879,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/640304"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.656379,
+            45.653573
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Cvetković 85 b",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 152232,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Hotel Princess Jastrebarsko (1)",
+          "score": 9,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 290803,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 561526,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 290804,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 561527,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/152232"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.386058047413826,
+            45.25330033394247
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Maksimilijana Benkovića 34, 35400, Nova Gradiška, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 626762,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Kaufland",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1671975,
+              "network_id": 1071,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4281680,
+                  "kilowatts": 120,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 4281681,
+                  "kilowatts": 120,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/626762"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.228171,
+            45.597985
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Julijev park 12, 43500, Daruvar, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 231846,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Daruvarske toplice",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 505505,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1255377,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 1255423,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 1255424,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/231846"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.223806,
+            45.593714
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg kralja Tomislava 8, 43500, Daruvar, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2",
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 231841,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Elevat DC Daruvar",
+          "score": 9,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 505489,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 1461406,
+                  "kilowatts": 16,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 1461411,
+                  "kilowatts": 16,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1461432,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 537712,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 1461410,
+                  "kilowatts": 2.1,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/231841"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.365617533578398,
+            45.49599093654068
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Zagrebačka ul. 49a, 44000, Sisak, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 605496,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Kaufland",
+          "score": 5.1,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1584493,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3529486,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/605496"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.106776,
+            45.689529
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Velikogorička 55, Staro Čiće, 10419, Vukovina, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 313578,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "EKO - OBRADA d.o.o.",
+          "score": 6.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 730769,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2196477,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/313578"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.393341892030726,
+            45.7052757228456
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. kralja Tomislava 37, 10310, Ivanić-Grad, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2",
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 386388,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Park Stjepana Posezija",
+          "score": 6.6,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 929798,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 3879774,
+                  "kilowatts": 3.84,
+                  "power": 0,
+                  "status": "UNKNOWN"
+                },
+                {
+                  "connector": 7,
+                  "id": 3879775,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "UNKNOWN"
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/386388"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.388137817382812,
+            45.70551681518555
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Omladinska ul. 21, 10310, Ivanić Grad, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 513929,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "ELEN Ivanic Grad",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1324615,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3098287,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3098288,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/513929"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.558091,
+            45.486682
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "47000 Karlovac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 240799,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Sportska dvorana - Sjeveroistok",
+          "score": 5.8,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 530394,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1422831,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 530395,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1422832,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/240799"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.94177996367216,
+            45.57260346988337
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Industrijska cesta 1, 43280, Garešnica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 632128,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "GARMONT ,SAMOUSLUŽNA AUTOPRAONICA",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1686916,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3724775,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/632128"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.859891,
+            45.585968
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "1 Trg Stjepana Radiča, Pisarovina, 10451, Hrvatska",
+          "available_station_count": 0,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 386383,
+          "in_use_station_count": 1,
+          "is_fast_charger": false,
+          "name": "HT općina Pisarovina",
+          "score": 6.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 929793,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2491549,
+                  "kilowatts": 7.68,
+                  "power": 0,
+                  "status": "CHARGING"
+                },
+                {
+                  "connector": 7,
+                  "id": 2491550,
+                  "kilowatts": 7.68,
+                  "power": 0,
+                  "status": "UNKNOWN"
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/386383"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.643249,
+            45.563577
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trnovka ul. 28, 44317, Popovača, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 90992,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Vinarija Trdenic",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 144293,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 349940,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/90992"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.01408,
+            45.30822
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "150 Paklenica, Paklenica, 44330, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 529901,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Odmorište Stari Grabovac Sjever",
+          "score": 1,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1800596,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3959215,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 3959216,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3959217,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": true,
+          "url": "http://api.plugshare.com/view/location/529901"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.198582366108894,
+            45.444886861739874
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Ivana Gundulića 3, 34550, Pakrac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 634627,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Metalko",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1693317,
+              "network_id": 1470,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3879057,
+                  "kilowatts": 60,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3879058,
+                  "kilowatts": 60,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1693318,
+              "network_id": 1470,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3879059,
+                  "kilowatts": 60,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3879060,
+                  "kilowatts": 60,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/634627"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.171804,
+            45.702731
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Ivana Nepomuka Jemeršića 2, 43290, Grubišno Polje, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 270882,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "ELEN Grubišno Polje",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 597187,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3720152,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3720153,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/270882"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.112032,
+            45.689524
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Velikogorička ul. 19, 10419, Staro Čiće, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 345882,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "ELEN Auto Gašparić",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 821218,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2326340,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 2326796,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 2326797,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/345882"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.655625246166801,
+            45.653820963107506
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Cvetković 85a, 10450, Cvetković, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 652849,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Jastrebarsko",
+          "station_count": 12,
+          "stations": [
+            {
+              "id": 1746084,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278336,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052981,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278337,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052982,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278338,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052983,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278339,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052984,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278340,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052985,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278341,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052986,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278342,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052987,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278343,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052988,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278344,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052989,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278345,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052990,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278346,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2052991,
+              "network_id": 8,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4278347,
+                  "kilowatts": 200,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/652849"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.71142292022705,
+            45.66322708129883
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "210 Donji Desinec, Donji Desinec, 10450, Hrvatska",
+          "available_station_count": 2,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 232356,
+          "in_use_station_count": 0,
+          "is_fast_charger": true,
+          "name": "Desinec Sjever",
+          "score": 9,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1053866,
+              "network_id": 1410,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 2689298,
+                  "kilowatts": 160,
+                  "power": 0,
+                  "status": "AVAILABLE"
+                }
+              ]
+            },
+            {
+              "id": 1053867,
+              "network_id": 1410,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 2689299,
+                  "kilowatts": 160,
+                  "power": 0,
+                  "status": "AVAILABLE"
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/232356"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.973922,
+            45.344759
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Zagrebačka ul. 45, 44330, Novska, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 272133,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Novska (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 600430,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1667405,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/272133"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.584046,
+            45.444266
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Jelaši ul. 39, 47000, Karlovac",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 294868,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "ELEN Lukoil Turanj",
+          "score": 9.6,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 645639,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2051792,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 672526,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2087113,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 2882898,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 2882899,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/294868"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.41430594339651,
+            45.45648911706225
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Čret, 44000, Sisak, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 273280,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Termoelektrana Sisak",
+          "score": 6.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 603728,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 1689906,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 1689907,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1689908,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": true,
+          "url": "http://api.plugshare.com/view/location/273280"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.164233,
+            45.41247
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Slavonska ul. 45, 34551, Lipik, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 308266,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Elen Lipik",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 716395,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2151440,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/308266"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.629969,
+            44.934092
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Smoljanac 67, 53231, Smoljanac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 373247,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Camping Plitvice",
+          "score": 7.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 897570,
+              "network_id": 1470,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3879050,
+                  "kilowatts": 60,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3879051,
+                  "kilowatts": 60,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/373247"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.612662092544154,
+            44.90635163922193
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "WJ47+F3 Rastovača, Plitvička jezera, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 457047,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Plitvička jezera parking 1",
+          "score": 7.2,
+          "station_count": 3,
+          "stations": [
+            {
+              "id": 1104899,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 2770438,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 2770439,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 2770440,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1618595,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3589663,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3589664,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1618596,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3589665,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3589666,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/457047"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.645664,
+            44.968259
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Grabovac 235, 47246, Grabovac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 406773,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Vila Cancar",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 980493,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 2574011,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/406773"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.055104,
+            45.711743
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. Fausta Vrančića 12, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 278395,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Dream Hotel & Restaurant",
+          "score": 9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1805556,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3969710,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3969711,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/278395"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.076392885319517,
+            45.714272799034774
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg kralja Tomislava 2, 10410, Velika Gorica",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "CCS2",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 714793,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Turistička Zajednica Velika Gorica (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 2049783,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4271633,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4271634,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/714793"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.07025,
+            45.715462
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Zagrebačka Ul. 37, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": 0,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/AR.png",
+          "icon_type": "AR",
+          "id": 81044,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "Pučko Otvoreno Učilište",
+          "score": 4.8,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 929810,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2491580,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "OUTOFORDER"
+                }
+              ]
+            }
+          ],
+          "under_repair": true,
+          "url": "http://api.plugshare.com/view/location/81044"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.647173,
+            45.563592
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "44317 Popovača, Trnovka 29",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 111456,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Restoran August",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 189568,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 417917,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/111456"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.653403,
+            45.673826
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg Josipa Jurja Strossmayera Jastrebarsko",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 94755,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "ELEN Trg Josipa Jurja Strossmayera",
+          "score": 9.6,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 152694,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 363713,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 207534,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 445540,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/94755"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.861858,
+            45.401244
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "A3, 44322, Lipovljani, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 272129,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Odmorište Lipovljani Sjever (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 600425,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 1667394,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1667395,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 1667396,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/272129"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.858059,
+            45.401079
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "A3, 44322, Lipovljani, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/YR.png",
+          "icon_type": "YR",
+          "id": 272130,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Odmorište Lipovljani Jug (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 600426,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 1667397,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 1667398,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 1667399,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/272130"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.606700029430382,
+            45.55718609732949
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Mrzljaki 116 Karlovac, 47201, Draganić, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 174117,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Tifon Draganic Jug",
+          "score": 5.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 355740,
+              "network_id": 1248,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 644201,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 644202,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 644203,
+                  "kilowatts": 43,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/174117"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.608328,
+            45.560262
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Mrzljaki 118 Karlovac, 47201, Draganić, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 174112,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Tifon Draganic Sjever",
+          "score": 5.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 355735,
+              "network_id": 1248,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 644191,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 644192,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 644193,
+                  "kilowatts": 43,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/174112"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.650646,
+            44.971198
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Grabovac 173, Grabovac, 31325, Hrvatska",
+          "available_station_count": 1,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 217025,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "16 Lakes Hotel",
+          "score": 8.6,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 929681,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2491360,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "AVAILABLE"
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/217025"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.067363856483446,
+            45.71138427085994
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Trg Stjepana Radića 1, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": 0,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 81043,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "Trg Stjepana Radića",
+          "score": 5.1,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1322732,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3095244,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "OUTOFORDER"
+                }
+              ]
+            },
+            {
+              "id": 2049714,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 4271516,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4271517,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/81043"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.075267122684487,
+            45.710683292243345
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Sajmišna ul bb, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 386397,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "McDonald’s",
+          "score": 7.9,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 2049713,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 4271514,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4271515,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/386397"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.073332,
+            45.712982
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Zagrebačka Ul. 3, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": 0,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 140346,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "Parking Zagrebacka",
+          "score": 2.9,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1040365,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2667647,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "OUTOFORDER"
+                }
+              ]
+            },
+            {
+              "id": 2048413,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 4269373,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4269374,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/140346"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.055441983044147,
+            45.716341506794535
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. kneza Ljudevita Posavskog 47, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 462489,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "STOP SHOP Velika Gorica",
+          "score": 10,
+          "station_count": 3,
+          "stations": [
+            {
+              "id": 1152097,
+              "network_id": 1397,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 2823257,
+                  "kilowatts": 100,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3476548,
+                  "kilowatts": 100,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1188168,
+              "network_id": 1397,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2885584,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1188169,
+              "network_id": 1397,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2885585,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/462489"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.293161414563656,
+            45.233849909839485
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Gorice 5E, 35428, Dragalić, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 688025,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Dragalic sjever",
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1980988,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4206218,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 4206219,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 2016817,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4206216,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 4206217,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/688025"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.369467612229094,
+            45.49241606315091
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Rimska 31, Sisak",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2",
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 551294,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Euroart93 digital agency",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1426815,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3282864,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 10,
+                  "id": 3282865,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/551294"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.510411,
+            45.638459
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Vezišće 2H, 10315 Vezišće, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 236214,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "INA Novoselac Jug",
+          "score": 6.2,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1801100,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3960296,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 3960297,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3960298,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/236214"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.512723,
+            45.637864
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Žutička ulica 34, 10315 Okešinec, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 321783,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "INA Novoselac Sjever",
+          "score": 10,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1809934,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3979035,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 3979036,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3979037,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/321783"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.076527313736236,
+            45.71834363383673
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Rakarska ul. 1A, 10410, Velika Gorica",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 714798,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Hotel Garden Hill",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 2049797,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 4271658,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4271659,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/714798"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.05372635647992,
+            45.718712008821996
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. kneza Ljudevita Posavskog 51, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 595934,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Kaufland Velika Gorica",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1551164,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 3591737,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3591738,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/595934"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.053549387731557,
+            45.72070045825094
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. kneza Ljudevita Posavskog 53, 10410, Velika Gorica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 171695,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Lidl Velika Gorica",
+          "score": 8.2,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 349358,
+              "network_id": 1072,
+              "outlets": [
+                {
+                  "connector": 3,
+                  "id": 3792498,
+                  "kilowatts": 17,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 20,
+                  "id": 3792499,
+                  "kilowatts": 17,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 3792500,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/171695"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.648224,
+            45.67217
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ulica Zrinsko Frankopanska 13, Jaska, 10450, HR",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 86062,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Grad Jastrebarsko",
+          "score": 6.8,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 648670,
+              "network_id": 13,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2058199,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 648671,
+              "network_id": 13,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2058200,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/86062"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.056674,
+            45.717201
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Ul. kneza Ljudevita Posavskog 45, Velika Gorica, 10410, Hrvatska",
+          "available_station_count": 1,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2",
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 79081,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "Goričanka",
+          "score": 6.2,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 929809,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 2491578,
+                  "kilowatts": 3.84,
+                  "power": 0,
+                  "status": "AVAILABLE"
+                },
+                {
+                  "connector": 7,
+                  "id": 2491579,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "CHARGING"
+                }
+              ]
+            },
+            {
+              "id": 2049785,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 4271639,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4271640,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/79081"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.557070864814715,
+            45.48598960128214
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Rakovac ul. 1, 47000, Karlovac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 482357,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Sportska dvorana - Zapad",
+          "score": 6.2,
+          "station_count": 2,
+          "stations": [
+            {
+              "id": 1237460,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2963240,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            },
+            {
+              "id": 1237461,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2963241,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/482357"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.648188,
+            44.973433
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Grabovac 101, 47246, Grabovac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Wall (Euro)"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 406833,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "INA gas station",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 980603,
+              "outlets": [
+                {
+                  "connector": 10,
+                  "id": 2574169,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/406833"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            15.647452,
+            44.973077
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Grabovac 101, 47246, Grabovac, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 287077,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "ELEN Grabovac",
+          "score": 10,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 627159,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 1858324,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/287077"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.528945998458877,
+            45.633148458260976
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Česmanska ul. 43, 10315, Okešinec, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 564550,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "WATTchains Oldtimer Doctor",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1463425,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3339942,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/564550"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.370852234104966,
+            45.49071252081441
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Rimska ul. 27A, 44000, Sisak, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 636626,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Sisak, Elen",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1698587,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3748532,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/636626"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.529228,
+            45.632955
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Česmanska ul. 106, 10315, Okešinec, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/G.png",
+          "icon_type": "G",
+          "id": 348320,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "Oldtimer Doctor",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 827405,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2335112,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/348320"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            17.29056595766981,
+            45.232916177418474
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Autocesta A3, Bregana Zagreb Lipovac bb, 35428, Dragalić, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": false,
+          "connector_types": [
+            "CCS2",
+            "CHAdeMO",
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/Y.png",
+          "icon_type": "Y",
+          "id": 231826,
+          "in_use_station_count": null,
+          "is_fast_charger": true,
+          "name": "Crodux Dragalić Jug",
+          "score": 7.6,
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1798642,
+              "network_id": 1101,
+              "outlets": [
+                {
+                  "connector": 20,
+                  "id": 4198530,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 3,
+                  "id": 4198531,
+                  "kilowatts": 50,
+                  "power": 0,
+                  "status": null
+                },
+                {
+                  "connector": 7,
+                  "id": 4198532,
+                  "kilowatts": 22,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/231826"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.126625,
+            45.658977
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "445 Rakitovec, Vukovina, 10419, Hrvatska",
+          "available_station_count": 0,
+          "coming_soon": false,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/AR.png",
+          "icon_type": "AR",
+          "id": 386343,
+          "in_use_station_count": 0,
+          "is_fast_charger": false,
+          "name": "Vukovina",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 929696,
+              "network_id": 1155,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 2491389,
+                  "kilowatts": 15.36,
+                  "power": 0,
+                  "status": "OUTOFORDER"
+                }
+              ]
+            }
+          ],
+          "under_repair": true,
+          "url": "http://api.plugshare.com/view/location/386343"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.941732195106496,
+            45.57261053458578
+          ]
+        },
+        "properties": {
+          "access": 1,
+          "address": "Industrijska cesta 1, 43280, Garešnica, Hrvatska",
+          "available_station_count": null,
+          "coming_soon": true,
+          "connector_types": [
+            "Type 2"
+          ],
+          "icon": "https://assets.plugshare.com/icons/GR.png",
+          "icon_type": "GR",
+          "id": 270881,
+          "in_use_station_count": null,
+          "is_fast_charger": false,
+          "name": "GARMONT,SAMOUSLUŽNA AUTOPRAONICA (Open 24/7) (Coming Soon)",
+          "station_count": 1,
+          "stations": [
+            {
+              "id": 1686915,
+              "outlets": [
+                {
+                  "connector": 7,
+                  "id": 3724774,
+                  "kilowatts": null,
+                  "power": 0,
+                  "status": null
+                }
+              ]
+            }
+          ],
+          "under_repair": false,
+          "url": "http://api.plugshare.com/view/location/270881"
+        }
+      }
   ]
 }
