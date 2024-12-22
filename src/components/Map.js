@@ -126,9 +126,9 @@ function Map() {
         type: 'circle',
         source: {
           type: 'vector',
-          url: 'mapbox://limbo777.2j7np18a',
+          url: 'mapbox://limbo777.6gxzbgyk',
         },
-        'source-layer': 'Geoportal_elektricne_punionic-7m6rfn',
+        'source-layer': 'punionice-hrvatske-mapbox-bot6vl',
         paint: {
           'circle-color': '#00C0FD',
           'circle-radius': 4,
@@ -176,6 +176,29 @@ function Map() {
             .addTo(mapInstance);
         }
       });
+
+      mapInstance.on('click', 'chargingstations', (e) => {
+        const features = mapInstance.queryRenderedFeatures(e.point, {
+          layers: ['chargingstations'],
+        });
+      
+        if (features.length > 0) {
+          const feature = features[0];
+          const { name, address, station_count, connector_types, is_fast_charger } = feature.properties;
+      
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+              <h6 class="text-lg font-semibold">${name}</h6>
+              <p><strong>Adresa:</strong> ${address}</p>
+              <p><strong>Broj stanica:</strong> ${station_count || 'N/A'}</p>
+              <p><strong>Tip konektora:</strong> ${connector_types ? JSON.parse(connector_types).join(', ') : 'N/A'}</p>
+              <p><strong>Brzo punjenje:</strong> ${is_fast_charger ? 'Da': 'Ne'}</p>
+            `)
+            .addTo(mapInstance);
+        }
+      });
+      
 
       setMap(mapInstance);
     });
