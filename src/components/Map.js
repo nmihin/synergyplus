@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import { useTranslation } from 'react-i18next'; 
+import { Popover, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles.css';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
@@ -237,42 +239,47 @@ function Map() {
             const marker = new mapboxgl.Marker({ color })
               .setLngLat([record.geopoint.lon, record.geopoint.lat])
               .setPopup(
-                new mapboxgl.Popup().setHTML(`
+                new mapboxgl.Popup({ maxWidth: '400px' }).setHTML(`
                   <h6 class="text-lg font-semibold text-left">${t('pollution.title')}</h6>
-                  <p class="text-left mb-1">
+                  <p class="text-left mb-0">
                     <strong>${t('pollution.main_pollutant')}:</strong> ${dominant || 'N/A'}
                   </p>
-                  <p class="text-left mb-1">
+                  <p class="text-left mb-0">
                     <strong>${t('pollution.co_level')}:</strong> 
                     <span class="flex items-center">
                       <span class="w-2.5 h-2.5 rounded-full mr-2" style="background-color: ${getCategoryColor(category_co)};"></span>
                       ${t(`pollution.categories.${category_co.toLowerCase()}`)} - ${value_co || 'N/A'}
                     </span>
+                    <p class="text-left text-[10px]">Visoke razine CO često su povezane s područjima gustog prometa.</p>
                   </p>
-                  <p class="text-left mb-1">
+                  <p class="text-left mb-0">
                     <strong>${t('pollution.no2_level')}:</strong> 
                     <span class="flex items-center">
                       <span class="w-2.5 h-2.5 rounded-full mr-2" style="background-color: ${getCategoryColor(category_no2)};"></span>
                       ${t(`pollution.categories.${category_no2.toLowerCase()}`)} - ${value_no2 || 'N/A'}
                     </span>
+                    <p class="text-left text-[10px]">Povišene razine često su povezane s urbanim područjima s velikim prometom.</p>
                   </p>
-                  <p class="text-left mb-1">
+                  <p class="text-left mb-0">
                     <strong>${t('pollution.o3_level')}:</strong> 
                     <span class="flex items-center">
                       <span class="w-2.5 h-2.5 rounded-full mr-2" style="background-color: ${getCategoryColor(category_o3)};"></span>
                       ${t(`pollution.categories.${category_o3.toLowerCase()}`)} - ${value_o3 || 'N/A'}
                     </span>
+                    <p class="text-left text-[10px]">Jako podložan temperaturi i sunčevoj svjetlosti, s vrhuncima u poslijepodnevnim satima.</p>
                   </p>
-                  <p class="text-left mb-1">
+                  <p class="text-left mb-0">
                     <strong>${t('pollution.pm25_level')}:</strong> 
                     <span class="flex items-center">
                       <span class="w-2.5 h-2.5 rounded-full mr-2" style="background-color: ${getCategoryColor(category_pm25)};"></span>
                       ${t(`pollution.categories.${category_pm25.toLowerCase()}`)} - ${value_pm5 || 'N/A'}
                     </span>
+                    <p class="text-left text-[10px]">PM2.5 često korelira s CO i NO u područjima s intenzivnom aktivnošću sagorijevaju goriva.</p>
                   </p>
                 `)         
               );
             return marker;
+
           });
 
           setMarkers(newMarkers);
