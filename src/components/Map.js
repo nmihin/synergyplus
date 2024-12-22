@@ -18,6 +18,8 @@ function Map() {
     { id: 'chargingstations', name: 'Punionice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
+    { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
+    // materijali - https://hr.kompass.com/x/producer/a/sljunak-i-kamen/09670/
   ]);
   const { t } = useTranslation();
   const [pollutionData, setPollutionData] = useState(null);
@@ -156,6 +158,45 @@ function Map() {
         layout: {
           visibility: 'none',
         },
+      });
+
+      mapInstance.addLayer({
+        id: 'materials',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.86abh78l',
+        },
+        'source-layer': 'distributori-algnog',
+        paint: {
+          'circle-color': '#32CD32',
+          'circle-radius': 4,
+        },
+        layout: {
+          visibility: 'none',
+        },
+      });
+
+      mapInstance.on('click', 'materials', (e) => {
+        const features = mapInstance.queryRenderedFeatures(e.point, {
+          layers: ['materials'],
+        });
+
+        if (features.length > 0) {
+          const feature = features[0];
+          const { name, address, company, phone, products, activities  } = feature.properties;
+
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+              <h6 class="text-lg font-semibold">${name}</h6>
+              <p class="text-left mb-0"><strong>${t('industry.address')}:</strong> ${address}</p>
+              <p class="text-left mb-0"><strong>Kontakt:</strong> ${phone}</p>
+              <p class="text-left mb-0"><strong>Proizvodi:</strong> ${products}</p>
+              <p class="text-left mb-0"><strong>Aktivnosti:</strong> ${activities}</p>
+            `)
+            .addTo(mapInstance);
+        }
       });
 
       // Add a click event listener for the industry layer to show popups
