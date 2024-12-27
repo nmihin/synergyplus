@@ -19,6 +19,7 @@ function Map() {
     { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
     { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
+    { id: 'stone', name: 'Tehničko-građevni kamen', visible: false, type: 'materials', typeName: 'Materijali' },
     // materijali - https://hr.kompass.com/x/producer/a/sljunak-i-kamen/09670/
   ]);
   const { t } = useTranslation();
@@ -194,6 +195,85 @@ function Map() {
               <p class="text-left mb-0"><strong>Kontakt:</strong> ${phone}</p>
               <p class="text-left mb-0"><strong>Proizvodi:</strong> ${products}</p>
               <p class="text-left mb-0"><strong>Aktivnosti:</strong> ${activities}</p>
+            `)
+            .addTo(mapInstance);
+        }
+      });
+
+      mapInstance.addLayer({
+        id: 'stone',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.62ietbdn',
+        },
+        'source-layer': 'WebGis-6f7vsd',
+        paint: {
+          'circle-color': '#32CD32',
+          'circle-radius': 4,
+        },
+        layout: {
+          visibility: 'none',
+        },
+      });
+
+      mapInstance.on('click', 'stone', (e) => {
+        const features = mapInstance.queryRenderedFeatures(e.point, {
+          layers: ['stone'],
+        });
+
+        if (features.length > 0) {
+          const feature = features[0];
+          const {
+            name = "N/A",
+            status = "N/A",
+            material = "N/A",
+            manager = "N/A",
+            exploatation_fee,
+            general_data,
+            all_spaces_exploatation_fields = "N/A",
+          } = feature.properties;
+        
+          // Parsing exploatation_fee and general_data as they are provided in JSON string format
+          const parsedExploatationFee = exploatation_fee ? JSON.parse(exploatation_fee) : {};
+          const parsedGeneralData = general_data ? JSON.parse(general_data) : {};
+        
+          console.log(feature.properties);
+        
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+              <div style="max-height: 300px; overflow-y: scroll;">
+                <h6 class="text-lg font-semibold">${name}</h6>
+                <p class="text-left mb-0"><strong>Status:</strong> ${status}</p>
+                <p class="text-left mb-0"><strong>Materijal:</strong> ${material}</p>
+                <p class="text-left mb-0"><strong>Upravitelj:</strong> ${manager}</p>
+                <hr>
+                <h6 class="text-lg font-semibold">Ovlaštenik</h6>
+                <p class="text-left mb-0"><strong>Naziv:</strong> ${parsedGeneralData.name || "N/A"}</p>
+                <p class="text-left mb-0"><strong>OIB:</strong> ${parsedGeneralData.OIB || "N/A"}</p>
+                <p class="text-left mb-0"><strong>Adresa:</strong> 
+                  ${parsedGeneralData.street || "N/A"}, 
+                  ${parsedGeneralData.postal_number || "N/A"} 
+                  ${parsedGeneralData.settlement || "N/A"}, 
+                  ${parsedGeneralData.state || "N/A"}
+                </p>
+                <hr>
+                <h6 class="text-lg font-semibold">Naknade za eksploataciju mineralnih sirovina</h6>
+                ${parsedExploatationFee && Object.entries(parsedExploatationFee).length > 0
+                  ? Object.entries(parsedExploatationFee).map(([year, fees]) => `
+                      <p class="text-left mb-0"><strong>${year}:</strong></p>
+                      <ul>
+                        <li><strong>Fiksni iznos:</strong> ${fees?.fixed_fee || "N/A"}</li>
+                        <li><strong>Varijabilni iznos:</strong> ${fees?.variable_fee || "N/A"}</li>
+                        <li><strong>Namjenski iznos:</strong> ${fees?.dedicated_amount || "N/A"}</li>
+                      </ul>
+                    `).join('')
+                  : "<p class='text-left mb-0'>Nema podataka.</p>"
+                }                         
+                <hr>
+                <p class="text-left mb-0"><strong>Svi istražni prostori i eksploatacijska polja:</strong> ${all_spaces_exploatation_fields}</p>
+              </div>
             `)
             .addTo(mapInstance);
         }
@@ -377,7 +457,7 @@ function Map() {
                     checked={layer.visible}
                     onChange={() => toggleLayer(layer.id)}
                   />
-                  <label className="form-check-label ms-2" htmlFor={layer.id}>
+                  <label className="form-check-label ms-2 text-left" htmlFor={layer.id}>
                     {layer.name}
                   </label>
                 </div>
