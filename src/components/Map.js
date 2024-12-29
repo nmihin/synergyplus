@@ -205,9 +205,9 @@ function Map() {
         type: 'circle',
         source: {
           type: 'vector',
-          url: 'mapbox://limbo777.62ietbdn',
+          url: 'mapbox://limbo777.d2qlrgaf',
         },
-        'source-layer': 'WebGis-6f7vsd',
+        'source-layer': 'WebGis-578g97',
         paint: {
           'circle-color': '#32CD32',
           'circle-radius': 4,
