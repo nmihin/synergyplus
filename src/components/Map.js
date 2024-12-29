@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import { useTranslation } from 'react-i18next'; 
-import { Popover, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
+import { Popover, OverlayTrigger, Button, Tooltip, Form } from 'react-bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../assets/styles.css';
@@ -19,7 +19,7 @@ function Map() {
     // { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
     // { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
-    { id: 'stone', name: 'Sirovine', visible: false, type: 'materials', typeName: 'Mineralne sirovine' },
+    { id: 'stone', name: 'Sirovine', visible: true, type: 'materials', typeName: 'Mineralne sirovine' },
     // materijali - https://hr.kompass.com/x/producer/a/sljunak-i-kamen/09670/
   ]);
   const { t } = useTranslation();
@@ -68,7 +68,7 @@ function Map() {
     const mapInstance = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
-      center: [15.2, 45.1],
+      center: [16.367245, 45.516107],
       zoom: 7,
     });
 
@@ -241,7 +241,7 @@ function Map() {
           ],
         },
         layout: {
-          visibility: 'none',
+          visibility: 'visible',
         },
       });
 
@@ -359,13 +359,13 @@ function Map() {
       
           // Handle the popup with the feature information
           const {
-            name = "N/A",
-            status = "N/A",
-            material = "N/A",
-            manager = "N/A",
+            name = "nema podataka",
+            status = "nema podataka",
+            material = "nema podataka",
+            manager = "nema podataka",
             exploatation_fee,
             general_data,
-            all_spaces_exploatation_fields = "N/A",
+            all_spaces_exploatation_fields = "nema podataka",
           } = feature.properties;
 
           console.log(feature.properties)
@@ -384,13 +384,13 @@ function Map() {
                 <p class="text-left mb-0"><strong>Upravitelj:</strong> ${manager}</p>
                 <hr>
                 <h6 class="text-lg font-semibold">Ovlaštenik</h6>
-                <p class="text-left mb-0"><strong>Naziv:</strong> ${parsedGeneralData.name || "N/A"}</p>
-                <p class="text-left mb-0"><strong>OIB:</strong> ${parsedGeneralData.OIB || "N/A"}</p>
+                <p class="text-left mb-0"><strong>Naziv:</strong> ${parsedGeneralData.name || "nema podataka"}</p>
+                <p class="text-left mb-0"><strong>OIB:</strong> ${parsedGeneralData.OIB || "nema podataka"}</p>
                 <p class="text-left mb-0"><strong>Adresa:</strong> 
-                  ${parsedGeneralData.street || "N/A"}, 
-                  ${parsedGeneralData.postal_number || "N/A"} 
-                  ${parsedGeneralData.settlement || "N/A"}, 
-                  ${parsedGeneralData.state || "N/A"}
+                  ${parsedGeneralData.street || "nema podataka"}, 
+                  ${parsedGeneralData.postal_number || "nema podataka"} 
+                  ${parsedGeneralData.settlement || "nema podataka"}, 
+                  ${parsedGeneralData.state || "nema podataka"}
                 </p>
                 <hr>
                 <h6 class="text-lg font-semibold">Naknade za eksploataciju mineralnih sirovina</h6>
@@ -398,9 +398,9 @@ function Map() {
                   ? Object.entries(parsedExploatationFee).map(([year, fees]) => `
                       <p class="text-left mb-0"><strong>${year}:</strong></p>
                       <ul>
-                        <li><strong>Fiksni iznos:</strong> ${fees?.fixed_fee || "N/A"}</li>
-                        <li><strong>Varijabilni iznos:</strong> ${fees?.variable_fee || "N/A"}</li>
-                        <li><strong>Namjenski iznos:</strong> ${fees?.dedicated_amount || "N/A"}</li>
+                        <li><strong>Fiksni iznos:</strong> ${fees?.fixed_fee || "nema podataka"}</li>
+                        <li><strong>Varijabilni iznos:</strong> ${fees?.variable_fee || "nema podataka"}</li>
+                        <li><strong>Namjenski iznos:</strong> ${fees?.dedicated_amount || "nema podataka"}</li>
                       </ul>
                     `).join('')
                   : "<p class='text-left mb-0'>Nema podataka.</p>"
@@ -575,10 +575,10 @@ function Map() {
     return acc;
   }, {});
 
+
   return (
     <div className="relative">
       <div id="map" style={{ width: '100%', height: '600px' }}></div>
-
       {/* Layer control panel */}
       <div
         className="absolute top-4 right-4 bg-white shadow-lg rounded-md p-4"
