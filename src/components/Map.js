@@ -27,6 +27,8 @@ function Map() {
   const [markers, setMarkers] = useState([]); // Pollution markers
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [routeData, setRouteData] = useState(null); 
+  const origin = [16.343972, 46.310371]; 
 
   const apiUrl = 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/worldwide-pollution/records?limit=100&refine=country%3A%22Croatia%22';
 
@@ -217,13 +219,119 @@ function Map() {
         },
       });
 
-      mapInstance.on('click', 'stone', (e) => {
+      let markers = [];  // Track markers globally
+
+      mapInstance.on('click', 'stone', async (e) => {
         const features = mapInstance.queryRenderedFeatures(e.point, {
           layers: ['stone'],
         });
-
+      
         if (features.length > 0) {
           const feature = features[0];
+          const destination = feature.geometry.coordinates; // [lng, lat]
+          const origin = [16.343972, 46.310371]; // Your origin coordinates
+      
+          // Remove any existing markers before adding new ones
+          markers.forEach(marker => marker.remove());
+          markers = [];  // Clear the markers array
+      
+          try {
+            // Fetch the optimized route from Mapbox API
+            const response = await fetch(
+              `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?overview=full&geometries=geojson&access_token=${mapboxgl.accessToken}`
+            );
+            const data = await response.json();
+      
+            if (data.trips && data.trips.length > 0) {
+              const route = data.trips[0].geometry;  // Route geometry (GeoJSON)
+              const distanceKm = (data.trips[0].distance / 1000).toFixed(2); // Distance in kilometers
+      
+              // Add the route to the map
+              if (mapInstance.getSource('route')) {
+                mapInstance.getSource('route').setData(route); // Update existing route
+              } else {
+                mapInstance.addSource('route', {
+                  type: 'geojson',
+                  data: route,
+                });
+      
+                mapInstance.addLayer({
+                  id: 'route',
+                  type: 'line',
+                  source: 'route',
+                  layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round',
+                  },
+                  paint: {
+                    'line-color': '#007cbf',
+                    'line-width': 2,
+                  },
+                });
+              }
+      
+              // Create red pin markers for both the origin and destination
+              const originMarker = new mapboxgl.Marker({ color: 'red' })
+                .setLngLat(origin)
+                .addTo(mapInstance);
+              markers.push(originMarker);  // Add the origin marker to the array
+      
+              const destinationMarker = new mapboxgl.Marker({ color: 'red' })
+                .setLngLat(destination)
+                .addTo(mapInstance);
+              markers.push(destinationMarker);  // Add the destination marker to the array
+      
+              // Add the label with road distance (in km) at the start (origin) location
+              const labelFeatures = [{
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: origin,  // Set the label at the start of the route (origin)
+                },
+                properties: {
+                  title: `Udaljenost do lokacije: ${distanceKm} km`,  // Display the distance in kilometers
+                },
+              }];
+              
+              const labelGeoJSON = {
+                type: 'FeatureCollection',
+                features: labelFeatures,
+              };
+              
+              // Update or add the label layer
+              if (mapInstance.getSource('distance-labels')) {
+                mapInstance.getSource('distance-labels').setData(labelGeoJSON);  // Update existing label
+              } else {
+                mapInstance.addSource('distance-labels', {
+                  type: 'geojson',
+                  data: labelGeoJSON,
+                });
+              
+                mapInstance.addLayer({
+                  id: 'distance-labels',
+                  type: 'symbol',
+                  source: 'distance-labels',
+                  layout: {
+                    'text-field': ['get', 'title'],
+                    'text-size': 12,
+                    'text-offset': [6, -2.75],  // Adjust the 'y' value here to offset the label above
+                    'text-anchor': 'top',
+                  },
+                  paint: {
+                    'text-color': '#044786',
+                  },
+                });
+              }
+      
+              console.log(`Udaljenost do lokacije: ${distanceKm} km`);
+            } else {
+              console.error('No routes found');
+            }
+          } catch (error) {
+            console.error('Error fetching route:', error);
+          }
+      
+          // Handle the popup with the feature information
           const {
             name = "N/A",
             status = "N/A",
@@ -233,13 +341,11 @@ function Map() {
             general_data,
             all_spaces_exploatation_fields = "N/A",
           } = feature.properties;
-        
+      
           // Parsing exploatation_fee and general_data as they are provided in JSON string format
           const parsedExploatationFee = exploatation_fee ? JSON.parse(exploatation_fee) : {};
           const parsedGeneralData = general_data ? JSON.parse(general_data) : {};
-        
-          console.log(feature.properties);
-        
+      
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(`
@@ -278,7 +384,10 @@ function Map() {
             .addTo(mapInstance);
         }
       });
-
+      
+      
+      
+  
       // Add a click event listener for the industry layer to show popups
       mapInstance.on('click', 'industry', (e) => {
         const features = mapInstance.queryRenderedFeatures(e.point, {
