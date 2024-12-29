@@ -224,9 +224,9 @@ function Map() {
         type: 'circle',
         source: {
           type: 'vector',
-          url: 'mapbox://limbo777.cnp80gqy',
+          url: 'mapbox://limbo777.b7q7a9x1',
         },
-        'source-layer': 'WebGis-8gpo3x',
+        'source-layer': 'WebGis-16k5l9',
         paint: {
           'circle-radius': 4,  // Set the radius of the circle
           'circle-color': [
