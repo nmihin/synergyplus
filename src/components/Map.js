@@ -211,8 +211,17 @@ function Map() {
         },
         'source-layer': 'WebGis-578g97',
         paint: {
-          'circle-color': '#32CD32',
-          'circle-radius': 4,
+          'circle-radius': 4,  // Set the radius of the circle
+          'circle-color': [
+            'match',
+            ['get', 'material'],  // Use the 'material' property
+            'Keramička i vatrostalna glina', '#D2691E',  // Clay color (light brown)
+            'Tehničko-građevni kamen', '#808080',        // Stone color (gray)
+            'Građevni pijesak i šljunak', '#F4A300',    // Sand color (beige)
+            'Ciglarska glina', '#B74A2E',                // Brick color (red)
+            'Karbonatne mineralne sirovine za industrijsku preradbu', '#A9A9A9', // Mineral color (gray)
+            '#0000FF',  // Default color (blue) for others
+          ],
         },
         layout: {
           visibility: 'none',
