@@ -1,0 +1,50 @@
+.material-clay::before {
+    content: '';
+    display: inline-block;
+    width: 8px; /* Circle size (double the desired radius of 4px) */
+    height: 8px; /* Circle size (double the desired radius of 4px) */
+    border-radius: 50%; /* Makes the shape circular */
+    background-color: #D2691E; /* Light brown for Keramička i vatrostalna glina */
+    margin-right: 4px; /* 4px space between the circle and the text */
+  }
+  
+  .material-stone::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #808080; /* Gray for Tehničko-građevni kamen */
+    margin-right: 4px;
+  }
+  
+  .material-sand::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #F4A300; /* Beige for Građevni pijesak i šljunak */
+    margin-right: 4px;
+  }
+  
+  .material-brick::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #B74A2E; /* Red for Ciglarska glina */
+    margin-right: 4px;
+  }
+  
+  .material-mineral::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* Optional green color for Karbonatne mineralne sirovine */
+    margin-right: 4px;
+  }
+  

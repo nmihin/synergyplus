@@ -15,8 +15,8 @@ function Map() {
     { id: 'counties', name: 'Županije', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'railways', name: 'Željeznice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
-    { id: 'chargingstations', name: 'Punionice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
-    { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
+    // { id: 'chargingstations', name: 'Punionice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
+    // { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
     // { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
     { id: 'stone', name: 'Sirovine', visible: false, type: 'materials', typeName: 'Mineralne sirovine' },
@@ -73,6 +73,21 @@ function Map() {
     });
 
     mapInstance.on('load', () => {
+
+      mapInstance.addLayer({
+        id: 'croatia',
+        type: 'fill',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.3uijvh4v',
+        },
+        'source-layer': 'croatia_Croatia_Country_Bound-c7ga88',
+        paint: {
+          'fill-color': 'rgba(4, 71, 134, 0.3)', // Semi-transparent blue
+          'fill-opacity': 0.3 // Ensure a consistent opacity
+        }
+      });
+      
       // Add the counties layer
       mapInstance.addLayer({
         id: 'counties',
@@ -128,22 +143,22 @@ function Map() {
       });
 
       // Add the charging stations layer with popups
-      mapInstance.addLayer({
-        id: 'chargingstations',
-        type: 'circle',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.cjmt8o21',
-        },
-        'source-layer': 'punionice-hrvatske-mapbox-49dww0',
-        paint: {
-          'circle-color': '#00C0FD',
-          'circle-radius': 4,
-        },
-        layout: {
-          visibility: 'none',
-        },
-      });
+      // mapInstance.addLayer({
+      //   id: 'chargingstations',
+      //   type: 'circle',
+      //   source: {
+      //     type: 'vector',
+      //     url: 'mapbox://limbo777.cjmt8o21',
+      //   },
+      //   'source-layer': 'punionice-hrvatske-mapbox-49dww0',
+      //   paint: {
+      //     'circle-color': '#00C0FD',
+      //     'circle-radius': 4,
+      //   },
+      //   layout: {
+      //     visibility: 'none',
+      //   },
+      // });
 
       // Add the industry layer with popups
       mapInstance.addLayer({
@@ -209,9 +224,9 @@ function Map() {
         type: 'circle',
         source: {
           type: 'vector',
-          url: 'mapbox://limbo777.d2qlrgaf',
+          url: 'mapbox://limbo777.cnp80gqy',
         },
-        'source-layer': 'WebGis-578g97',
+        'source-layer': 'WebGis-8gpo3x',
         paint: {
           'circle-radius': 4,  // Set the radius of the circle
           'circle-color': [
@@ -221,7 +236,7 @@ function Map() {
             'Tehničko-građevni kamen', '#808080',        // Stone color (gray)
             'Građevni pijesak i šljunak', '#F4A300',    // Sand color (beige)
             'Ciglarska glina', '#B74A2E',                // Brick color (red)
-            'Karbonatne mineralne sirovine za industrijsku preradbu', '#A9A9A9', // Mineral color (gray)
+            'Karbonatne mineralne sirovine za industrijsku preradbu', '#4CAF50', // Mineral color (gray)
             '#0000FF',  // Default color (blue) for others
           ],
         },
@@ -352,6 +367,8 @@ function Map() {
             general_data,
             all_spaces_exploatation_fields = "N/A",
           } = feature.properties;
+
+          console.log(feature.properties)
       
           // Parsing exploatation_fee and general_data as they are provided in JSON string format
           const parsedExploatationFee = exploatation_fee ? JSON.parse(exploatation_fee) : {};
@@ -389,7 +406,10 @@ function Map() {
                   : "<p class='text-left mb-0'>Nema podataka.</p>"
                 }                         
                 <hr>
-                <p class="text-left mb-0"><strong>Svi istražni prostori i eksploatacijska polja:</strong> ${all_spaces_exploatation_fields}</p>
+                <p class="text-left mb-0">
+                  <strong>Svi istražni prostori i eksploatacijska polja:</strong> 
+                  ${all_spaces_exploatation_fields === "Yes" ? "Da" : all_spaces_exploatation_fields === "No" ? "Ne" : all_spaces_exploatation_fields}
+                </p>
               </div>
             `)
             .addTo(mapInstance);
@@ -420,27 +440,27 @@ function Map() {
         }
       });
 
-      mapInstance.on('click', 'chargingstations', (e) => {
-        const features = mapInstance.queryRenderedFeatures(e.point, {
-          layers: ['chargingstations'],
-        });
+      // mapInstance.on('click', 'chargingstations', (e) => {
+      //   const features = mapInstance.queryRenderedFeatures(e.point, {
+      //     layers: ['chargingstations'],
+      //   });
       
-        if (features.length > 0) {
-          const feature = features[0];
-          const { name, address, station_count, connector_types, is_fast_charger } = feature.properties;
+      //   if (features.length > 0) {
+      //     const feature = features[0];
+      //     const { name, address, station_count, connector_types, is_fast_charger } = feature.properties;
       
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-              <h6 class="text-lg font-semibold">${name}</h6>
-              <p><strong>Adresa:</strong> ${address}</p>
-              <p><strong>Broj stanica:</strong> ${station_count || 'N/A'}</p>
-              <p><strong>Tip konektora:</strong> ${connector_types ? JSON.parse(connector_types).join(', ') : 'N/A'}</p>
-              <p><strong>Brzo punjenje:</strong> ${is_fast_charger ? 'Da': 'Ne'}</p>
-            `)
-            .addTo(mapInstance);
-        }
-      });
+      //     new mapboxgl.Popup()
+      //       .setLngLat(e.lngLat)
+      //       .setHTML(`
+      //         <h6 class="text-lg font-semibold">${name}</h6>
+      //         <p><strong>Adresa:</strong> ${address}</p>
+      //         <p><strong>Broj stanica:</strong> ${station_count || 'N/A'}</p>
+      //         <p><strong>Tip konektora:</strong> ${connector_types ? JSON.parse(connector_types).join(', ') : 'N/A'}</p>
+      //         <p><strong>Brzo punjenje:</strong> ${is_fast_charger ? 'Da': 'Ne'}</p>
+      //       `)
+      //       .addTo(mapInstance);
+      //   }
+      // });
       
 
       setMap(mapInstance);
