@@ -18,8 +18,8 @@ function Map() {
     { id: 'chargingstations', name: 'Punionice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
-    { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
-    { id: 'stone', name: 'Tehničko-građevni kamen', visible: false, type: 'materials', typeName: 'Materijali' },
+    // { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
+    { id: 'stone', name: 'Sirovine', visible: false, type: 'materials', typeName: 'Mineralne sirovine' },
     // materijali - https://hr.kompass.com/x/producer/a/sljunak-i-kamen/09670/
   ]);
   const { t } = useTranslation();
@@ -163,6 +163,7 @@ function Map() {
         },
       });
 
+      /*
       mapInstance.addLayer({
         id: 'materials',
         type: 'circle',
@@ -201,6 +202,7 @@ function Map() {
             .addTo(mapInstance);
         }
       });
+      */
 
       mapInstance.addLayer({
         id: 'stone',
