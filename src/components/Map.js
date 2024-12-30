@@ -578,10 +578,10 @@ function Map() {
 
   return (
     <div className="relative">
-      <div id="map" style={{ width: '100%', height: '600px' }}></div>
+      <div id="map" style={{ width: '100%', height: '800px' }}></div>
       {/* Layer control panel */}
       <div
-        className="absolute top-4 right-4 bg-white shadow-lg rounded-md p-4"
+        className="absolute p-4 bg-white rounded-md shadow-lg top-4 right-4"
         style={{ width: '250px' }}
       >
         <div>
@@ -589,7 +589,7 @@ function Map() {
             <div key={type}>
               <h6 className="layer-type-title">{groupedLayers[type][0].typeName}</h6>
               {groupedLayers[type].map((layer) => (
-                <div key={layer.id} className="form-check mb-2 d-flex align-items-center">
+                <div key={layer.id} className="mb-2 form-check d-flex align-items-center">
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -597,7 +597,7 @@ function Map() {
                     checked={layer.visible}
                     onChange={() => toggleLayer(layer.id)}
                   />
-                  <label className="form-check-label ms-2 text-left" htmlFor={layer.id}>
+                  <label className="text-left form-check-label ms-2" htmlFor={layer.id}>
                     {layer.name}
                   </label>
                 </div>
