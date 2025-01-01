@@ -15,12 +15,8 @@ function Map() {
     { id: 'counties', name: 'Županije', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'railways', name: 'Željeznice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
-    // { id: 'chargingstations', name: 'Punionice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
-    // { id: 'pollution', name: 'Onečišćenje', visible: false, type: 'data', typeName: 'Podaci' },
     { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
-    // { id: 'materials', name: 'Šljunak i kamen', visible: false, type: 'materials', typeName: 'Materijali' },
     { id: 'stone', name: 'Sirovine', visible: true, type: 'materials', typeName: 'Mineralne sirovine' },
-    // materijali - https://hr.kompass.com/x/producer/a/sljunak-i-kamen/09670/
   ]);
   const { t } = useTranslation();
   const [pollutionData, setPollutionData] = useState(null);
@@ -138,27 +134,9 @@ function Map() {
           'line-width': 1,
         },
         layout: {
-          visibility: 'none', // Set initial visibility to 'none'
+          visibility: 'none',
         },
       });
-
-      // Add the charging stations layer with popups
-      // mapInstance.addLayer({
-      //   id: 'chargingstations',
-      //   type: 'circle',
-      //   source: {
-      //     type: 'vector',
-      //     url: 'mapbox://limbo777.cjmt8o21',
-      //   },
-      //   'source-layer': 'punionice-hrvatske-mapbox-49dww0',
-      //   paint: {
-      //     'circle-color': '#00C0FD',
-      //     'circle-radius': 4,
-      //   },
-      //   layout: {
-      //     visibility: 'none',
-      //   },
-      // });
 
       // Add the industry layer with popups
       mapInstance.addLayer({
@@ -178,47 +156,6 @@ function Map() {
         },
       });
 
-      /*
-      mapInstance.addLayer({
-        id: 'materials',
-        type: 'circle',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.86abh78l',
-        },
-        'source-layer': 'distributori-algnog',
-        paint: {
-          'circle-color': '#32CD32',
-          'circle-radius': 4,
-        },
-        layout: {
-          visibility: 'none',
-        },
-      });
-
-      mapInstance.on('click', 'materials', (e) => {
-        const features = mapInstance.queryRenderedFeatures(e.point, {
-          layers: ['materials'],
-        });
-
-        if (features.length > 0) {
-          const feature = features[0];
-          const { name, address, company, phone, products, activities  } = feature.properties;
-
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-              <h6 class="text-lg font-semibold">${name}</h6>
-              <p class="text-left mb-0"><strong>${t('industry.address')}:</strong> ${address}</p>
-              <p class="text-left mb-0"><strong>Kontakt:</strong> ${phone}</p>
-              <p class="text-left mb-0"><strong>Proizvodi:</strong> ${products}</p>
-              <p class="text-left mb-0"><strong>Aktivnosti:</strong> ${activities}</p>
-            `)
-            .addTo(mapInstance);
-        }
-      });
-      */
-
       mapInstance.addLayer({
         id: 'stone',
         type: 'circle',
@@ -228,16 +165,16 @@ function Map() {
         },
         'source-layer': 'WebGis-16k5l9',
         paint: {
-          'circle-radius': 4,  // Set the radius of the circle
+          'circle-radius': 4,  
           'circle-color': [
             'match',
-            ['get', 'material'],  // Use the 'material' property
-            'Keramička i vatrostalna glina', '#D2691E',  // Clay color (light brown)
-            'Tehničko-građevni kamen', '#808080',        // Stone color (gray)
-            'Građevni pijesak i šljunak', '#F4A300',    // Sand color (beige)
-            'Ciglarska glina', '#B74A2E',                // Brick color (red)
-            'Karbonatne mineralne sirovine za industrijsku preradbu', '#4CAF50', // Mineral color (gray)
-            '#0000FF',  // Default color (blue) for others
+            ['get', 'material'], 
+            'Keramička i vatrostalna glina', '#D2691E', 
+            'Tehničko-građevni kamen', '#808080',        
+            'Građevni pijesak i šljunak', '#F4A300',   
+            'Ciglarska glina', '#B74A2E',            
+            'Karbonatne mineralne sirovine za industrijsku preradbu', '#4CAF50',
+            '#0000FF',  
           ],
         },
         layout: {
@@ -305,17 +242,16 @@ function Map() {
               const destinationMarker = new mapboxgl.Marker({ color: 'red' })
                 .setLngLat(destination)
                 .addTo(mapInstance);
-              markers.push(destinationMarker);  // Add the destination marker to the array
+              markers.push(destinationMarker);
       
-              // Add the label with road distance (in km) at the start (origin) location
               const labelFeatures = [{
                 type: 'Feature',
                 geometry: {
                   type: 'Point',
-                  coordinates: origin,  // Set the label at the start of the route (origin)
+                  coordinates: origin,
                 },
                 properties: {
-                  title: `Udaljenost do lokacije: ${distanceKm} km`,  // Display the distance in kilometers
+                  title: `Udaljenost do lokacije: ${distanceKm} km`,
                 },
               }];
               
@@ -326,7 +262,7 @@ function Map() {
               
               // Update or add the label layer
               if (mapInstance.getSource('distance-labels')) {
-                mapInstance.getSource('distance-labels').setData(labelGeoJSON);  // Update existing label
+                mapInstance.getSource('distance-labels').setData(labelGeoJSON);
               } else {
                 mapInstance.addSource('distance-labels', {
                   type: 'geojson',
@@ -439,29 +375,6 @@ function Map() {
             .addTo(mapInstance);
         }
       });
-
-      // mapInstance.on('click', 'chargingstations', (e) => {
-      //   const features = mapInstance.queryRenderedFeatures(e.point, {
-      //     layers: ['chargingstations'],
-      //   });
-      
-      //   if (features.length > 0) {
-      //     const feature = features[0];
-      //     const { name, address, station_count, connector_types, is_fast_charger } = feature.properties;
-      
-      //     new mapboxgl.Popup()
-      //       .setLngLat(e.lngLat)
-      //       .setHTML(`
-      //         <h6 class="text-lg font-semibold">${name}</h6>
-      //         <p><strong>Adresa:</strong> ${address}</p>
-      //         <p><strong>Broj stanica:</strong> ${station_count || 'N/A'}</p>
-      //         <p><strong>Tip konektora:</strong> ${connector_types ? JSON.parse(connector_types).join(', ') : 'N/A'}</p>
-      //         <p><strong>Brzo punjenje:</strong> ${is_fast_charger ? 'Da': 'Ne'}</p>
-      //       `)
-      //       .addTo(mapInstance);
-      //   }
-      // });
-      
 
       setMap(mapInstance);
     });
