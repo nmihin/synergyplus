@@ -48,3 +48,19 @@
     margin-right: 4px;
   }
   
+
+  #filter-data {
+    position: absolute;
+    left: 0;
+    width: 300px;
+    background-color: #e5e5e5;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.35;
+    transition: opacity 0.3s ease-in-out; /* Add transition for opacity */
+  }
+  
+  #filter-data:hover {
+    opacity: 1;
+  }
+  

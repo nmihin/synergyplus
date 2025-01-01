@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef  } from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import { useTranslation } from 'react-i18next'; 
-import { Popover, OverlayTrigger, Button, Tooltip, Form } from 'react-bootstrap'; 
+import { FaSearch } from 'react-icons/fa';
+import { InputGroup, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../assets/styles.css';
@@ -24,7 +25,17 @@ function Map() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [routeData, setRouteData] = useState(null); 
-  const origin = [16.343972, 46.310371]; 
+  const locationInput = document.getElementById('location-input');
+  const updateButton = document.getElementById('update-coordinates');
+  //const inputRef = useRef(null);
+  //const origin = [16.343972, 46.310371]; 
+  const [predictions, setPredictions] = useState([]);
+  const [selectedPlace, setSelectedPlace] = useState('');
+  const [origin, setOrigin] = useState([16.343972, 46.310371]);
+  const inputRef = useRef(null);
+  const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
+  const mapRef = useRef(null);
+  const [selectedCity, setSelectedCity] = useState(null);
 
   const apiUrl = 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/worldwide-pollution/records?limit=100&refine=country%3A%22Croatia%22';
 
@@ -192,7 +203,6 @@ function Map() {
         if (features.length > 0) {
           const feature = features[0];
           const destination = feature.geometry.coordinates; // [lng, lat]
-          const origin = [16.343972, 46.310371]; // Your origin coordinates
       
           // Remove any existing markers before adding new ones
           markers.forEach(marker => marker.remove());
@@ -200,6 +210,7 @@ function Map() {
       
           try {
             // Fetch the optimized route from Mapbox API
+            console.log(origin)
             const response = await fetch(
               `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?overview=full&geometries=geojson&access_token=${mapboxgl.accessToken}`
             );
@@ -380,7 +391,7 @@ function Map() {
     });
 
     return () => mapInstance.remove();
-  }, [pollutionData, t]);
+  }, [pollutionData, t, origin]);
 
   const toggleLayer = (layerId) => {
     setLayers((prev) =>
@@ -489,8 +500,122 @@ function Map() {
   }, {});
 
 
+  // LOCATION SEARCH
+  useEffect(() => {
+    if (window.google) {
+      setIsGoogleMapsLoaded(true);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=`+process.env.REACT_APP_GOOGLE_MAP+`&libraries=places`;
+    script.async = true;
+    script.defer = true;
+
+    script.onload = () => {
+      setIsGoogleMapsLoaded(true); // Set flag to true when API is loaded
+    };
+
+    script.onerror = () => {
+      console.error("Error loading Google Maps API.");
+    };
+
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);  // Clean up the script tag on unmount
+    };
+  }, []);
+
+  const fetchPredictions = async (inputValue) => {
+    if (!inputValue) return;
+
+    const geocodeUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(inputValue)}.json?access_token=${mapboxgl.accessToken}&country=HR`;
+
+    try {
+      const response = await fetch(geocodeUrl);
+      const data = await response.json();
+
+      if (data.features && data.features.length > 0) {
+        setPredictions(data.features); // Set predictions from Mapbox geocoding API
+      }
+    } catch (error) {
+      console.error("Error fetching predictions:", error);
+    }
+  };
+
+  // Effect to initialize the input autocomplete
+  useEffect(() => {
+    if (inputRef.current) {
+      const inputElement = inputRef.current;
+      inputElement.addEventListener("input", (e) => {
+        fetchPredictions(e.target.value);
+      });
+    }
+
+    return () => {
+      if (inputRef.current) {
+        const inputElement = inputRef.current;
+        inputElement.removeEventListener("input", fetchPredictions);
+      }
+    };
+  }, []);
+
+  const handleSelectPlace = (place) => {
+    setSelectedPlace(place.place_name);
+    setPredictions([]); // Clear predictions after selection
+
+    const [lng, lat] = place.center; // Mapbox returns [longitude, latitude]
+    setOrigin([lng, lat]);
+
+    // Update map view with selected place
+    if (mapRef.current) {
+      mapRef.current.flyTo({
+        center: [lng, lat],
+        zoom: 12,
+      });
+
+      new mapboxgl.Marker().setLngLat([lng, lat]).addTo(mapRef.current); // Add marker
+    }
+
+    console.log("Selected Coordinates:", [lng, lat]);
+  };
+
   return (
     <div className="relative">
+      <section id="filter-data">
+      <div className="row">
+        <div className="col-md-12">
+            <InputGroup className="pl-4 pr-4 pt-4">
+              <InputGroup.Text>    <FaSearch /></InputGroup.Text>
+
+              <FormControl
+                ref={inputRef}
+                value={selectedPlace.replace(", Croatia", "")} 
+                onChange={(e) => setSelectedPlace(e.target.value)} // Update input value
+                placeholder="Upiši lokaciju..."
+                aria-label="Lokacija"
+              />
+            </InputGroup>
+            {predictions.length > 0 && (
+              <ul
+                className="list-group position-absolute w-full"
+              >
+                {predictions.map((prediction) => (
+                  <li
+                  key={prediction.id}
+                  className="list-group-item list-group-item-action"
+                  style={{ textAlign: "left" }}  // Align the text to the left
+                  onClick={() => handleSelectPlace(prediction)}
+                >
+                  {prediction.place_name.replace(", Croatia", "")}
+                </li>
+                ))}
+              </ul>
+            )}
+        </div>
+        </div>
+      </section>
       <div id="map" style={{ width: '100%', height: '800px' }}></div>
       {/* Layer control panel */}
       <div
