@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { FaSearch } from 'react-icons/fa';
 import { InputGroup, FormControl, Form, Button, Row, Col } from 'react-bootstrap';
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import "../assets/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../assets/styles.css';
