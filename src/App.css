@@ -63,4 +63,9 @@
   #filter-data:hover {
     opacity: 1;
   }
+
+  #filter-data .list-group {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
   

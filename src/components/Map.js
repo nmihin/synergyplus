@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import { useTranslation } from 'react-i18next'; 
 import { FaSearch } from 'react-icons/fa';
-import { InputGroup, FormControl } from 'react-bootstrap';
+import { InputGroup, FormControl, Form, Button, Row, Col } from 'react-bootstrap';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../assets/styles.css';
@@ -36,8 +38,19 @@ function Map() {
   const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
   const mapRef = useRef(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [materialOrders, setMaterialOrders] = useState([]);
+  const [selectedLocations, setSelectedLocations] = useState([]);
+  const mapInstanceRef = useRef(null);
 
   const apiUrl = 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/worldwide-pollution/records?limit=100&refine=country%3A%22Croatia%22';
+
+  const materials = [
+    { material: 'Keramička i vatrostalna glina', color: '#D2691E', coordinates: [15.996913, 46.050043] },
+    { material: 'Tehničko-građevni kamen', color: '#808080', coordinates: [16.403424, 46.157390] },
+    { material: 'Građevni pijesak i šljunak', color: '#F4A300', coordinates: [16.297936, 46.333998] },
+    { material: 'Ciglarska glina', color: '#B74A2E', coordinates: [16.2619, 46.2453] },
+    { material: 'Karbonatne mineralne sirovine za industrijsku preradbu', color: '#4CAF50', coordinates: [16.142347, 46.333528] },
+  ];
 
   const getCategoryColor = (category) => {
     switch (category?.toLowerCase()) {
@@ -80,6 +93,10 @@ function Map() {
     });
 
     mapInstance.on('load', () => {
+
+      new mapboxgl.Marker({ color: 'red' }) 
+      .setLngLat(origin)
+      .addTo(mapInstance);
 
       mapInstance.addLayer({
         id: 'croatia',
@@ -388,6 +405,7 @@ function Map() {
       });
 
       setMap(mapInstance);
+      mapInstanceRef.current = mapInstance;
     });
 
     return () => mapInstance.remove();
@@ -581,11 +599,95 @@ function Map() {
     console.log("Selected Coordinates:", [lng, lat]);
   };
 
+  const handleMaterialChange = (index, material, value) => {
+    const updatedLocations = [...selectedLocations];
+    updatedLocations[index] = {
+      material,
+      quantity: value,
+      coordinates: materials[index]?.coordinates, // Add predefined coordinates for each material
+    };
+    setSelectedLocations(updatedLocations);
+  };
+
+  const createOrder = () => {
+    console.log('Narudžba:', materialOrders);
+    toast.success('Narudžba kreirana!', {
+      position: 'top-right',  // You can change the position if needed
+      autoClose: 3000,        // The toast will auto-close after 3 seconds
+    });
+    // Add logic to handle the order (e.g., save to the backend)
+  };
+
+  const createOptimizedRoute = async () => {
+    const mapInstance = mapInstanceRef.current;
+
+    if (selectedLocations.length === 0) {
+      toast.error('Molim odaberite minimalno jednu sirovinu za kreiranje narudžbe.', {
+        position: 'top-right',  // Toast position
+        autoClose: 3000,        // Auto-close time in milliseconds
+      });
+      return;
+    }
+
+    try {
+      const origin = [16.367245, 45.516107]; // Example origin (this can be dynamic too)
+      const waypoints = selectedLocations
+        .filter((loc) => loc.quantity > 0)
+        .map((loc) => loc.coordinates.join(','))
+        .join(';');
+
+      const url = `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${origin.join(
+        ','
+      )};${waypoints};${origin.join(',')}?overview=full&geometries=geojson&roundtrip=true&access_token=${mapboxgl.accessToken}`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.trips && data.trips.length > 0) {
+        const route = data.trips[0].geometry;
+        const distanceKm = (data.trips[0].distance / 1000).toFixed(2);
+
+        if (mapInstance.getSource('route')) {
+          mapInstance.getSource('route').setData(route);
+        } else {
+          mapInstance.addSource('route', { type: 'geojson', data: route });
+
+          mapInstance.addLayer({
+            id: 'route',
+            type: 'line',
+            source: 'route',
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round',
+            },
+            paint: {
+              'line-color': '#007cbf',
+              'line-width': 2,
+            },
+          });
+        }
+
+        toast.success(`Optimizirana ruta kreirana! Totalna udaljenost: ${distanceKm} km.`, {
+          position: 'top-right',  // Toast position
+          autoClose: 3000,        // Auto-close time in milliseconds
+        });
+      } else {
+        toast.error(`Ruta se ne može generirati.`, {
+          position: 'top-right',  // Toast position
+          autoClose: 3000,        // Auto-close time in milliseconds
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching optimized route:', error);
+    }
+  };
+  
   return (
     <div className="relative">
       <section id="filter-data">
       <div className="row">
-        <div className="col-md-12">
+        {/* FILTER */}
+        <div className="col-md-12 z-10">
             <InputGroup className="pl-4 pr-4 pt-4">
               <InputGroup.Text>    <FaSearch /></InputGroup.Text>
 
@@ -599,7 +701,7 @@ function Map() {
             </InputGroup>
             {predictions.length > 0 && (
               <ul
-                className="list-group position-absolute w-full"
+                className="list-group position-absolute w-full pl-4 pr-4"
               >
                 {predictions.map((prediction) => (
                   <li
@@ -614,6 +716,58 @@ function Map() {
               </ul>
             )}
         </div>
+        {/* ORDER */}
+        <div className="col-md-12 mt-4">
+      <h5>Odaberi sirovine</h5>
+      <Form>
+        {materials.map((item, index) => (
+          <Form.Group as={Row} key={index} className="mb-3 align-items-center pr-4">
+            <Col md={8} className="relative">
+            <div
+                style={{
+                  top:0,
+                  bottom:0,
+                  left: '1.75rem',
+                  position: 'absolute',
+                  backgroundColor: item.color,
+                  width: '10px',
+                  height: '10px',
+                  borderRadius: '50%',
+                  margin: 'auto'
+                }}
+              ></div>
+              <Form.Label className="pl-8 float-left mb-0" style={{ fontSize: '14px', lineHeight: '1', textAlign: 'left' }}>
+                {item.material}
+              </Form.Label>
+            </Col>
+            <Col md={4}>
+              <InputGroup>
+                <Form.Control
+                  type="number"
+                  min="0"
+                  placeholder="kg"
+                  onChange={(e) =>
+                    handleMaterialChange(index, item.material, e.target.value)
+                  }
+                />
+              </InputGroup>
+            </Col>
+          </Form.Group>
+        ))}
+        <div className="row pl-4 pr-4">
+          <div className="col-md-12 z-10">
+            <Button className="w-full mb-2" variant="primary" onClick={createOptimizedRoute}>
+              Kreiraj optimiziranu rutu
+            </Button>
+          </div>
+          <div className="col-md-12 z-10">
+            <Button className="w-full" variant="secondary" onClick={createOrder}>
+              Kreiraj narudžbu
+            </Button>
+          </div>
+        </div>
+      </Form>
+    </div>
         </div>
       </section>
       <div id="map" style={{ width: '100%', height: '800px' }}></div>
@@ -644,6 +798,7 @@ function Map() {
           ))}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
