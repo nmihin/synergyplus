@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { FaSearch } from 'react-icons/fa';
 import { InputGroup, FormControl, Form, Button, Row, Col } from 'react-bootstrap';
 import { toast, ToastContainer } from "react-toastify";
+import axios from 'axios';
 import "../assets/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -41,6 +42,10 @@ function Map() {
   const [materialOrders, setMaterialOrders] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const mapInstanceRef = useRef(null);
+  //TWILIO
+  const [to, setTo] = useState('+385915251864');
+  const [message, setMessage] = useState('Link na rutu: https://goo.gl/maps/DM8WB3uCF8i85tpD9');
+  const [status, setStatus] = useState('');
 
   const apiUrl = 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/worldwide-pollution/records?limit=100&refine=country%3A%22Croatia%22';
 
@@ -615,6 +620,7 @@ function Map() {
       position: 'top-right',  // You can change the position if needed
       autoClose: 3000,        // The toast will auto-close after 3 seconds
     });
+    sendSMS();
     // Add logic to handle the order (e.g., save to the backend)
   };
 
@@ -681,7 +687,33 @@ function Map() {
       console.error('Error fetching optimized route:', error);
     }
   };
-  
+
+  const sendSMS = async () => {
+    try {
+        const response = await axios.post('http://localhost:3001/send-sms', {
+            to,
+            message,
+        });
+
+        if (response.data.success) {
+            toast.success(`Poruka poslana! SID: ${response.data.messageSid}`, {
+                position: 'top-right',  // Toast position
+                autoClose: 3000,       // Auto-close time in milliseconds
+            });
+        } else {
+            toast.error('Greška u slanju poruke.', {
+                position: 'top-right',
+                autoClose: 3000,
+            });
+        }
+    } catch (error) {
+        toast.error(`Greška: ${error.message}`, {
+            position: 'top-right',
+            autoClose: 3000,
+        });
+    }
+  };
+
   return (
     <div className="relative">
       <section id="filter-data">
