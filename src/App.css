@@ -54,7 +54,7 @@
     width: 8px; /* Circle size (double the desired radius of 4px) */
     height: 8px; /* Circle size (double the desired radius of 4px) */
     border-radius: 50%; /* Makes the shape circular */
-    background-color:red; /* Light brown for Keramička i vatrostalna glina */
+    background-color: #e57373; /* Soft red */
     margin-right: 4px; /* 4px space between the circle and the text */
   }
   
@@ -64,7 +64,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: orange; /* Gray for Tehničko-građevni kamen */
+    background-color: #ffb74d; /* Soft orange */
     margin-right: 4px;
   }
   
@@ -74,7 +74,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: yellow; /* Beige for Građevni pijesak i šljunak */
+    background-color: #fff176; /* Soft yellow */
     margin-right: 4px;
   }
   
@@ -84,7 +84,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: green; /* Red for Ciglarska glina */
+    background-color: #81c784; /* Soft green */
     margin-right: 4px;
   }
   
@@ -109,3 +109,7 @@
     padding-right: 1rem !important;
   }
   
+  .logo-container {
+    text-align: center;
+    margin: auto;
+  }

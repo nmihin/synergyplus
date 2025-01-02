@@ -129,7 +129,7 @@ function Map() {
         'source-layer': 'zup-9cdau9',
         paint: {
           'line-color': '#044786',
-          'line-width': 2,
+          'line-width': 1,
         },
         layout: {
           visibility: 'none', // Set initial visibility to 'none'
@@ -146,7 +146,7 @@ function Map() {
         },
         'source-layer': 'europe-road-2vsqhc',
         paint: {
-          'line-color': '#111',
+          'line-color': '#5f5f5f',
           'line-width': 1,
         },
         layout: {
@@ -231,10 +231,10 @@ function Map() {
           // 'circle-color': '#00C0FD',
           'circle-color': [
             'case',
-            ['==', ['%', ['get', 'id'], 4], 0], '#FF0000', // Red
-            ['==', ['%', ['get', 'id'], 4], 1], '#FFFF00', // Yellow
-            ['==', ['%', ['get', 'id'], 4], 2], '#FFA500', // Orange
-            '#008000' // Green (default)
+            ['==', ['%', ['get', 'id'], 4], 0], '#e57373', // Red
+            ['==', ['%', ['get', 'id'], 4], 1], '#fff176', // Yellow
+            ['==', ['%', ['get', 'id'], 4], 2], '#ffb74d', // Orange
+            '#81c784' // Green (default)
         ],
           'circle-radius': 4,
         },
