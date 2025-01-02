@@ -19,8 +19,9 @@ function Map() {
     { id: 'counties', name: 'Županije', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'roads', name: 'Ceste', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
     { id: 'railways', name: 'Željeznice', visible: false, type: 'infrastructure', typeName: 'Infrastruktura' },
-    { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
-    { id: 'stone', name: 'Sirovine', visible: true, type: 'materials', typeName: 'Mineralne sirovine' },
+    // { id: 'industry', name: 'Cementare', visible: false, type: 'industry', typeName: 'Industrija' },
+    // { id: 'stone', name: 'Sirovine', visible: true, type: 'materials', typeName: 'Mineralne sirovine' },
+    { id: 'chargingstations', name: 'Punionice', visible: true, type: 'infrastructure', typeName: 'Infrastruktura' }
   ]);
   const { t } = useTranslation();
   const [pollutionData, setPollutionData] = useState(null);
@@ -211,12 +212,168 @@ function Map() {
           ],
         },
         layout: {
-          visibility: 'visible',
+          visibility: 'none', // visible
         },
       });
 
-      let markers = [];  // Track markers globally
+      let markers = []; // Track markers globally
 
+
+      mapInstance.addLayer({
+        id: 'chargingstations',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://limbo777.cjmt8o21',
+        },
+        'source-layer': 'punionice-hrvatske-mapbox-49dww0',
+        paint: {
+          // 'circle-color': '#00C0FD',
+          'circle-color': [
+            'case',
+            ['==', ['%', ['get', 'id'], 4], 0], '#FF0000', // Red
+            ['==', ['%', ['get', 'id'], 4], 1], '#FFFF00', // Yellow
+            ['==', ['%', ['get', 'id'], 4], 2], '#FFA500', // Orange
+            '#008000' // Green (default)
+        ],
+          'circle-radius': 4,
+        },
+        layout: {
+          visibility: 'visible',
+        },
+     });
+
+      mapInstance.on('click', 'chargingstations', async (e) => {
+          const features = mapInstance.queryRenderedFeatures(e.point, {
+              layers: ['chargingstations'],
+          });
+      
+          if (features.length > 0) {
+              const feature = features[0];
+              const destination = feature.geometry.coordinates; // [lng, lat]
+      
+              // Remove any existing markers before adding new ones
+              markers.forEach(marker => marker.remove());
+              markers = []; // Clear the markers array
+      
+              try {
+                  // Fetch the optimized route from Mapbox API
+                  const response = await fetch(
+                      `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?overview=full&geometries=geojson&access_token=${mapboxgl.accessToken}`
+                  );
+                  const data = await response.json();
+      
+                  if (data.trips && data.trips.length > 0) {
+                      const route = data.trips[0].geometry; // Route geometry (GeoJSON)
+                      const distanceKm = (data.trips[0].distance / 1000).toFixed(2); // Distance in kilometers
+      
+                      // Add the route to the map
+                      if (mapInstance.getSource('route')) {
+                          mapInstance.getSource('route').setData(route); // Update existing route
+                      } else {
+                          mapInstance.addSource('route', {
+                              type: 'geojson',
+                              data: route,
+                          });
+      
+                          mapInstance.addLayer({
+                              id: 'route',
+                              type: 'line',
+                              source: 'route',
+                              layout: {
+                                  'line-join': 'round',
+                                  'line-cap': 'round',
+                              },
+                              paint: {
+                                  'line-color': '#007cbf',
+                                  'line-width': 2,
+                              },
+                          });
+                      }
+      
+                      // Create red pin markers for both the origin and destination
+                      const originMarker = new mapboxgl.Marker({ color: 'red' })
+                          .setLngLat(origin)
+                          .addTo(mapInstance);
+                      markers.push(originMarker); // Add the origin marker to the array
+      
+                      const destinationMarker = new mapboxgl.Marker({ color: 'red' })
+                          .setLngLat(destination)
+                          .addTo(mapInstance);
+                      markers.push(destinationMarker);
+      
+                      // Add distance label as a GeoJSON feature
+                      const labelFeatures = [{
+                          type: 'Feature',
+                          geometry: {
+                              type: 'Point',
+                              coordinates: origin,
+                          },
+                          properties: {
+                              title: `Udaljenost do lokacije: ${distanceKm} km`,
+                          },
+                      }];
+      
+                      const labelGeoJSON = {
+                          type: 'FeatureCollection',
+                          features: labelFeatures,
+                      };
+      
+                      // Update or add the label layer
+                      if (mapInstance.getSource('distance-labels')) {
+                          mapInstance.getSource('distance-labels').setData(labelGeoJSON);
+                      } else {
+                          mapInstance.addSource('distance-labels', {
+                              type: 'geojson',
+                              data: labelGeoJSON,
+                          });
+      
+                          mapInstance.addLayer({
+                              id: 'distance-labels',
+                              type: 'symbol',
+                              source: 'distance-labels',
+                              layout: {
+                                  'text-field': ['get', 'title'],
+                                  'text-size': 12,
+                                  'text-offset': [6, -2.75], // Offset above the destination
+                                  'text-anchor': 'top',
+                              },
+                              paint: {
+                                  'text-color': '#044786',
+                              },
+                          });
+                      }
+      
+                      console.log(`Udaljenost do lokacije: ${distanceKm} km`);
+                  } else {
+                      console.error('No routes found');
+                  }
+              } catch (error) {
+                  console.error('Error fetching route:', error);
+              }
+      
+              // Show popup with charging station details
+              const {
+                  name,
+                  address,
+                  station_count,
+                  connector_types,
+                  is_fast_charger,
+              } = feature.properties;
+      
+              new mapboxgl.Popup()
+                  .setLngLat(e.lngLat)
+                  .setHTML(`
+                      <h6 class="text-lg font-semibold">${name}</h6>
+                      <p><strong>Adresa:</strong> ${address}</p>
+                      <p><strong>Broj stanica:</strong> ${station_count || 'N/A'}</p>
+                      <p><strong>Tip konektora:</strong> ${connector_types ? JSON.parse(connector_types).join(', ') : 'N/A'}</p>
+                      <p><strong>Brzo punjenje:</strong> ${is_fast_charger ? 'Da' : 'Ne'}</p>
+                  `)
+                  .addTo(mapInstance);
+          }
+      });
+      
       mapInstance.on('click', 'stone', async (e) => {
         const features = mapInstance.queryRenderedFeatures(e.point, {
           layers: ['stone'],
@@ -385,8 +542,7 @@ function Map() {
         }
       });
       
-      
-      
+    
   
       // Add a click event listener for the industry layer to show popups
       mapInstance.on('click', 'industry', (e) => {
@@ -749,7 +905,7 @@ function Map() {
             )}
         </div>
         {/* ORDER */}
-        <div className="col-md-12 mt-4">
+        {/* <div className="col-md-12 mt-4">
       <h5>Odaberi sirovine</h5>
       <Form>
         {materials.map((item, index) => (
@@ -799,7 +955,7 @@ function Map() {
           </div>
         </div>
       </Form>
-    </div>
+    </div> */}
         </div>
       </section>
       <div id="map" style={{ width: '100%', height: '800px' }}></div>
