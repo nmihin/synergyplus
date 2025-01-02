@@ -1,3 +1,4 @@
+require('dotenv').config();  // Load environment variables from .env file
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');  // Added CORS middleware
@@ -7,9 +8,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const accountSid = 'AC183da6b3fb4e76482cbf0716f5358889';
-const authToken = '344caad38f0b814b0252c7b8ff9858ab';
+// Retrieve sensitive data from environment variables
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
+const fromPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 app.post('/send-sms', (req, res) => {
     console.log('Incoming request:', req.body);
@@ -19,7 +22,7 @@ app.post('/send-sms', (req, res) => {
     client.messages
         .create({
             body: message,
-            from: '+16282126933',
+            from: fromPhoneNumber,
             to: to,
         })
         .then((message) => {
