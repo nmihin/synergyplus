@@ -620,7 +620,6 @@ function Map() {
       position: 'top-right',  // You can change the position if needed
       autoClose: 3000,        // The toast will auto-close after 3 seconds
     });
-    sendSMS();
     // Add logic to handle the order (e.g., save to the backend)
   };
 
@@ -789,9 +788,14 @@ function Map() {
               Kreiraj optimiziranu rutu
             </Button>
           </div>
-          <div className="col-md-12 z-10">
+          <div className="col-md-12 z-10 mb-2">
             <Button className="w-full" variant="secondary" onClick={createOrder}>
               Kreiraj narudžbu
+            </Button>
+          </div>
+          <div className="col-md-12 z-10">
+            <Button className="w-full" variant="secondary" onClick={sendSMS}>
+              Pošalji rutu
             </Button>
           </div>
         </div>
