@@ -690,18 +690,15 @@ function Map() {
 
   const sendSMS = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/send-sms', {
-            to,
-            message,
-        });
+        const response = await axios.post('https://synergyplus-yjck.vercel.app/send-sms', { to, message });
 
         if (response.data.success) {
-            toast.success(`Poruka poslana! SID: ${response.data.messageSid}`, {
-                position: 'top-right',  // Toast position
-                autoClose: 3000,       // Auto-close time in milliseconds
+            toast.success('Poruka poslana!', {
+                position: 'top-right',
+                autoClose: 3000,
             });
         } else {
-            toast.error('Greška u slanju poruke.', {
+            toast.error(`Greška: ${response.data.error}`, {
                 position: 'top-right',
                 autoClose: 3000,
             });

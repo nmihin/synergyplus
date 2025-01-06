@@ -1,41 +1,71 @@
-require('dotenv').config();  // Load environment variables from .env file
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');  // Added CORS middleware
-const twilio = require('twilio');
+const cors = require('cors');
+const https = require('follow-redirects').https;
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// Retrieve sensitive data from environment variables
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
-const fromPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+const API_KEY = process.env.INFOBIP_API_KEY; // Infobip API key
+const INFOBIP_BASE_URL = process.env.INFOBIP_BASE_URL;
 
 app.post('/send-sms', (req, res) => {
-    console.log('Incoming request:', req.body);
-
     const { to, message } = req.body;
 
-    client.messages
-        .create({
-            body: message,
-            from: fromPhoneNumber,
-            to: to,
-        })
-        .then((message) => {
-            console.log('Message sent:', message.sid);
-            res.status(200).send({ success: true, messageSid: message.sid });
-        })
-        .catch((error) => {
-            console.error('Error sending message:', error.message);
-            res.status(500).send({ success: false, error: error.message });
+    const options = {
+        method: 'POST',
+        hostname: INFOBIP_BASE_URL,
+        path: '/sms/2/text/advanced',
+        headers: {
+            Authorization: `App ${API_KEY}`,
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        maxRedirects: 20,
+    };
+
+    const reqData = JSON.stringify({
+        messages: [
+            {
+                destinations: [{ to }],
+                from: 'ServiceSMS',
+                text: message,
+            },
+        ],
+    });
+
+    const httpsReq = https.request(options, (response) => { // Renamed variable to avoid conflict
+        let chunks = [];
+
+        response.on('data', (chunk) => chunks.push(chunk));
+
+        response.on('end', () => {
+            const body = Buffer.concat(chunks).toString();
+            const responseData = JSON.parse(body);
+
+            if (response.statusCode >= 200 && response.statusCode < 300) {
+                res.status(200).send({ success: true, response: responseData });
+            } else {
+                res.status(response.statusCode).send({
+                    success: false,
+                    error: responseData.requestError || 'Unknown error occurred',
+                });
+            }
         });
+    });
+
+    httpsReq.on('error', (error) => {
+        console.error('Error sending SMS:', error.message);
+        res.status(500).send({ success: false, error: error.message });
+    });
+
+    httpsReq.write(reqData);
+    httpsReq.end();
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
