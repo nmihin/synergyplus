@@ -690,7 +690,7 @@ function Map() {
 
   const sendSMS = async () => {
     try {
-        const response = await axios.post('https://synergyplus-yjck.vercel.app/send-sms', { to, message });
+        const response = await axios.post('http://localhost:3001/send-sms', { to, message });
 
         if (response.data.success) {
             toast.success('Poruka poslana!', {

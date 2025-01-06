@@ -2,7 +2,7 @@
     "name": "sms-service",
     "version": "1.0.0",
     "description": "A simple SMS service using Infobip API",
-    "main": "api/send-sms.js",
+    "main": "server.js",
     "scripts": {
       "start": "node server.js"
     },
