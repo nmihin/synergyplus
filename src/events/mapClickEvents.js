@@ -1,9 +1,11 @@
 import mapboxgl from 'mapbox-gl';
+import shortid from 'shortid';
 
-export function registerMapClickEvents(mapInstance, origin, t) {
+export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
   let markers = []; // Track markers globally
 
   // Click event for the 'stone' layer
+  
   mapInstance.on('click', 'stone', async (e) => {
     const features = mapInstance.queryRenderedFeatures(e.point, {
       layers: ['stone'],
@@ -12,6 +14,12 @@ export function registerMapClickEvents(mapInstance, origin, t) {
     if (features.length > 0) {
       const feature = features[0];
       const destination = feature.geometry.coordinates; // [lng, lat]
+
+      const shortId = shortid.generate();
+      const googleMapsUrl = `https://www.google.com/maps/dir/${origin[1]},${origin[0]}/${destination[1]},${destination[0]}`;
+      const shortenedUrl = `https://short.url/${shortId}`;
+
+      setMessage(`Link na rutu: ${googleMapsUrl}`);
 
       // Remove any existing markers before adding new ones
       markers.forEach((marker) => marker.remove());
@@ -157,7 +165,7 @@ export function registerMapClickEvents(mapInstance, origin, t) {
         .addTo(mapInstance);
     }
   });
-
+  
   // Click event for the 'industry' layer
   mapInstance.on('click', 'industry', (e) => {
     const features = mapInstance.queryRenderedFeatures(e.point, {

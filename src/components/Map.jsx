@@ -5,7 +5,7 @@ import FilterData from './FilterData';
 import { toast, ToastContainer } from "react-toastify";
 import layersConfig from '../config/layersConfig';
 import { registerMapClickEvents } from '../events/mapClickEvents';
-import * as turf from '@turf/turf';
+import shortid from 'shortid';
 import axios from 'axios';
 import "../assets/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
@@ -38,7 +38,7 @@ function Map() {
 
   //INFOBIP
   const [to, setTo] = useState('+385915251864');
-  const [message, setMessage] = useState('Link na rutu: https://goo.gl/maps/DM8WB3uCF8i85tpD9');
+  const [message, setMessage] = useState("");
 
   const materials = [
     { material: 'Keramička i vatrostalna glina', color: '#D2691E' },
@@ -74,7 +74,7 @@ function Map() {
       });
 
       // Register click events
-      registerMapClickEvents(mapInstance, origin, t);
+      registerMapClickEvents(mapInstance, origin, t, setMessage);
 
       setMap(mapInstance);
       mapInstanceRef.current = mapInstance;
@@ -243,7 +243,7 @@ function Map() {
       console.warn('No matching feature found for location:', location);
       return location;
     });
-    
+  
     // Filter out locations without coordinates
     const validLocations = updatedLocations.filter((loc) => loc.coordinates);
   
@@ -271,6 +271,18 @@ function Map() {
         const route = data.trips[0].geometry;
         const distanceKm = (data.trips[0].distance / 1000).toFixed(2);
   
+        // Generate Google Maps link
+        const googleMapsBaseUrl = "https://www.google.com/maps/dir/";
+        const googleMapsWaypoints = validLocations
+          .map((loc) => `${loc.coordinates[1]},${loc.coordinates[0]}`)
+          .join("/");
+
+        const shortId = shortid.generate();
+        const googleMapsUrl = `${googleMapsBaseUrl}${origin[1]},${origin[0]}/${googleMapsWaypoints}`;
+        const shortenedUrl = `https://short.url/${shortId}`;
+  
+        setMessage(`Link na rutu: ${googleMapsUrl}`);
+
         if (mapInstance.getSource('route')) {
           mapInstance.getSource('route').setData(route);
         } else {
@@ -348,11 +360,12 @@ function Map() {
       console.error('Error fetching optimized route:', error);
     }
   };
+  
 
   const sendSMS = async () => {
     try {
         const response = await axios.post('http://localhost:3001/send-sms', { to, message });
-
+        
         if (response.data.success) {
             toast.success('Poruka poslana!', {
                 position: 'top-right',
