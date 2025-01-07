@@ -56,7 +56,7 @@
     background-color: #e5e5e5;
     height: 100%;
     z-index: 1;
-    opacity: 0.35;
+    opacity: 1;
     transition: opacity 0.3s ease-in-out; /* Add transition for opacity */
   }
   
