@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { FaSearch } from 'react-icons/fa';
 import { InputGroup, FormControl, Form, Button, Row, Col } from 'react-bootstrap';
 import { toast, ToastContainer } from "react-toastify";
+import layersConfig from './../config/layersConfig';
+import { registerMapClickEvents } from './../events/mapClickEvents';
 import axios from 'axios';
 import "../assets/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
@@ -24,28 +26,21 @@ function Map() {
   ]);
   const { t } = useTranslation();
   const [pollutionData, setPollutionData] = useState(null);
-  const [markers, setMarkers] = useState([]); // Pollution markers
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [routeData, setRouteData] = useState(null); 
-  const locationInput = document.getElementById('location-input');
-  const updateButton = document.getElementById('update-coordinates');
-  //const inputRef = useRef(null);
-  //const origin = [16.343972, 46.310371]; 
+  const [markers, setMarkers] = useState([]);
   const [predictions, setPredictions] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState('');
   const [origin, setOrigin] = useState([16.343972, 46.310371]);
   const inputRef = useRef(null);
-  const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
   const mapRef = useRef(null);
-  const [selectedCity, setSelectedCity] = useState(null);
   const [materialOrders, setMaterialOrders] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const mapInstanceRef = useRef(null);
-  //TWILIO
+  const [loading, setLoading] = useState(true);
+  const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
+
+  //INFOBIP
   const [to, setTo] = useState('+385915251864');
   const [message, setMessage] = useState('Link na rutu: https://goo.gl/maps/DM8WB3uCF8i85tpD9');
-  const [status, setStatus] = useState('');
 
   const apiUrl = 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/worldwide-pollution/records?limit=100&refine=country%3A%22Croatia%22';
 
@@ -71,25 +66,6 @@ function Map() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        setPollutionData(result.results);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     const mapInstance = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
@@ -103,311 +79,19 @@ function Map() {
       .setLngLat(origin)
       .addTo(mapInstance);
 
-      mapInstance.addLayer({
-        id: 'croatia',
-        type: 'fill',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.3uijvh4v',
-        },
-        'source-layer': 'croatia_Croatia_Country_Bound-c7ga88',
-        paint: {
-          'fill-color': 'rgba(4, 71, 134, 0.3)', // Semi-transparent blue
-          'fill-opacity': 0.3 // Ensure a consistent opacity
-        }
-      });
-      
-      // Add the counties layer
-      mapInstance.addLayer({
-        id: 'counties',
-        type: 'line',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.dqg000hv',
-        },
-        'source-layer': 'zup-9cdau9',
-        paint: {
-          'line-color': '#044786',
-          'line-width': 2,
-        },
-        layout: {
-          visibility: 'none', // Set initial visibility to 'none'
-        },
-      });
-
-      // Add the roads layer
-      mapInstance.addLayer({
-        id: 'roads',
-        type: 'line',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.4s9h2zhx',
-        },
-        'source-layer': 'europe-road-2vsqhc',
-        paint: {
-          'line-color': '#111',
-          'line-width': 1,
-        },
-        layout: {
-          visibility: 'none', // Set initial visibility to 'none'
-        },
-      });
-
-      // Add the railways layer
-      mapInstance.addLayer({
-        id: 'railways',
-        type: 'line',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.aqisum0b',
-        },
-        'source-layer': 'europe-rail-road-044x6d',
-        paint: {
-          'line-color': '#1E66A8',
-          'line-width': 1,
-        },
-        layout: {
-          visibility: 'none',
-        },
-      });
-
-      // Add the industry layer with popups
-      mapInstance.addLayer({
-        id: 'industry',
-        type: 'circle',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.cg3arnwd',
-        },
-        'source-layer': 'cementare-3vo6f9',
-        paint: {
-          'circle-color': '#00C0FD',
-          'circle-radius': 4,
-        },
-        layout: {
-          visibility: 'none',
-        },
-      });
-
-      mapInstance.addLayer({
-        id: 'stone',
-        type: 'circle',
-        source: {
-          type: 'vector',
-          url: 'mapbox://limbo777.b7q7a9x1',
-        },
-        'source-layer': 'WebGis-16k5l9',
-        paint: {
-          'circle-radius': 4,  
-          'circle-color': [
-            'match',
-            ['get', 'material'], 
-            'Keramička i vatrostalna glina', '#D2691E', 
-            'Tehničko-građevni kamen', '#808080',        
-            'Građevni pijesak i šljunak', '#F4A300',   
-            'Ciglarska glina', '#B74A2E',            
-            'Karbonatne mineralne sirovine za industrijsku preradbu', '#4CAF50',
-            '#0000FF',  
-          ],
-        },
-        layout: {
-          visibility: 'visible',
-        },
-      });
-
-      let markers = [];  // Track markers globally
-
-      mapInstance.on('click', 'stone', async (e) => {
-        const features = mapInstance.queryRenderedFeatures(e.point, {
-          layers: ['stone'],
+      layersConfig.forEach((layer) => {
+        mapInstance.addLayer({
+          id: layer.id,
+          type: layer.type,
+          source: layer.source,
+          'source-layer': layer.sourceLayer,
+          paint: layer.paint,
+          layout: layer.layout,
         });
-      
-        if (features.length > 0) {
-          const feature = features[0];
-          const destination = feature.geometry.coordinates; // [lng, lat]
-      
-          // Remove any existing markers before adding new ones
-          markers.forEach(marker => marker.remove());
-          markers = [];  // Clear the markers array
-      
-          try {
-            // Fetch the optimized route from Mapbox API
-            console.log(origin)
-            const response = await fetch(
-              `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?overview=full&geometries=geojson&access_token=${mapboxgl.accessToken}`
-            );
-            const data = await response.json();
-      
-            if (data.trips && data.trips.length > 0) {
-              const route = data.trips[0].geometry;  // Route geometry (GeoJSON)
-              const distanceKm = (data.trips[0].distance / 1000).toFixed(2); // Distance in kilometers
-      
-              // Add the route to the map
-              if (mapInstance.getSource('route')) {
-                mapInstance.getSource('route').setData(route); // Update existing route
-              } else {
-                mapInstance.addSource('route', {
-                  type: 'geojson',
-                  data: route,
-                });
-      
-                mapInstance.addLayer({
-                  id: 'route',
-                  type: 'line',
-                  source: 'route',
-                  layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round',
-                  },
-                  paint: {
-                    'line-color': '#007cbf',
-                    'line-width': 2,
-                  },
-                });
-              }
-      
-              // Create red pin markers for both the origin and destination
-              const originMarker = new mapboxgl.Marker({ color: 'red' })
-                .setLngLat(origin)
-                .addTo(mapInstance);
-              markers.push(originMarker);  // Add the origin marker to the array
-      
-              const destinationMarker = new mapboxgl.Marker({ color: 'red' })
-                .setLngLat(destination)
-                .addTo(mapInstance);
-              markers.push(destinationMarker);
-      
-              const labelFeatures = [{
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: origin,
-                },
-                properties: {
-                  title: `Udaljenost do lokacije: ${distanceKm} km`,
-                },
-              }];
-              
-              const labelGeoJSON = {
-                type: 'FeatureCollection',
-                features: labelFeatures,
-              };
-              
-              // Update or add the label layer
-              if (mapInstance.getSource('distance-labels')) {
-                mapInstance.getSource('distance-labels').setData(labelGeoJSON);
-              } else {
-                mapInstance.addSource('distance-labels', {
-                  type: 'geojson',
-                  data: labelGeoJSON,
-                });
-              
-                mapInstance.addLayer({
-                  id: 'distance-labels',
-                  type: 'symbol',
-                  source: 'distance-labels',
-                  layout: {
-                    'text-field': ['get', 'title'],
-                    'text-size': 12,
-                    'text-offset': [6, -2.75],  // Adjust the 'y' value here to offset the label above
-                    'text-anchor': 'top',
-                  },
-                  paint: {
-                    'text-color': '#044786',
-                  },
-                });
-              }
-      
-              console.log(`Udaljenost do lokacije: ${distanceKm} km`);
-            } else {
-              console.error('No routes found');
-            }
-          } catch (error) {
-            console.error('Error fetching route:', error);
-          }
-      
-          // Handle the popup with the feature information
-          const {
-            name = "nema podataka",
-            status = "nema podataka",
-            material = "nema podataka",
-            manager = "nema podataka",
-            exploatation_fee,
-            general_data,
-            all_spaces_exploatation_fields = "nema podataka",
-          } = feature.properties;
-
-          console.log(feature.properties)
-      
-          // Parsing exploatation_fee and general_data as they are provided in JSON string format
-          const parsedExploatationFee = exploatation_fee ? JSON.parse(exploatation_fee) : {};
-          const parsedGeneralData = general_data ? JSON.parse(general_data) : {};
-      
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-              <div style="max-height: 300px; overflow-y: scroll;">
-                <h6 class="text-lg font-semibold">${name}</h6>
-                <p class="text-left mb-0"><strong>Status:</strong> ${status}</p>
-                <p class="text-left mb-0"><strong>Materijal:</strong> ${material}</p>
-                <p class="text-left mb-0"><strong>Upravitelj:</strong> ${manager}</p>
-                <hr>
-                <h6 class="text-lg font-semibold">Ovlaštenik</h6>
-                <p class="text-left mb-0"><strong>Naziv:</strong> ${parsedGeneralData.name || "nema podataka"}</p>
-                <p class="text-left mb-0"><strong>OIB:</strong> ${parsedGeneralData.OIB || "nema podataka"}</p>
-                <p class="text-left mb-0"><strong>Adresa:</strong> 
-                  ${parsedGeneralData.street || "nema podataka"}, 
-                  ${parsedGeneralData.postal_number || "nema podataka"} 
-                  ${parsedGeneralData.settlement || "nema podataka"}, 
-                  ${parsedGeneralData.state || "nema podataka"}
-                </p>
-                <hr>
-                <h6 class="text-lg font-semibold">Naknade za eksploataciju mineralnih sirovina</h6>
-                ${parsedExploatationFee && Object.entries(parsedExploatationFee).length > 0
-                  ? Object.entries(parsedExploatationFee).map(([year, fees]) => `
-                      <p class="text-left mb-0"><strong>${year}:</strong></p>
-                      <ul>
-                        <li><strong>Fiksni iznos:</strong> ${fees?.fixed_fee || "nema podataka"}</li>
-                        <li><strong>Varijabilni iznos:</strong> ${fees?.variable_fee || "nema podataka"}</li>
-                        <li><strong>Namjenski iznos:</strong> ${fees?.dedicated_amount || "nema podataka"}</li>
-                      </ul>
-                    `).join('')
-                  : "<p class='text-left mb-0'>Nema podataka.</p>"
-                }                         
-                <hr>
-                <p class="text-left mb-0">
-                  <strong>Svi istražni prostori i eksploatacijska polja:</strong> 
-                  ${all_spaces_exploatation_fields === "Yes" ? "Da" : all_spaces_exploatation_fields === "No" ? "Ne" : all_spaces_exploatation_fields}
-                </p>
-              </div>
-            `)
-            .addTo(mapInstance);
-        }
       });
-      
-      
-      
-  
-      // Add a click event listener for the industry layer to show popups
-      mapInstance.on('click', 'industry', (e) => {
-        const features = mapInstance.queryRenderedFeatures(e.point, {
-          layers: ['industry'],
-        });
 
-        if (features.length > 0) {
-          const feature = features[0];
-          const { name, address, company, color } = feature.properties;
-
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-              <h6 class="text-lg font-semibold">${name}</h6>
-              <p><strong>${t('industry.address')}:</strong> ${address}</p>
-              <p><strong>${t('industry.company')}:</strong> ${company}</p>
-            `)
-            .addTo(mapInstance);
-        }
-      });
+      // Register click events
+      registerMapClickEvents(mapInstance, origin, t);
 
       setMap(mapInstance);
       mapInstanceRef.current = mapInstance;
@@ -415,6 +99,28 @@ function Map() {
 
     return () => mapInstance.remove();
   }, [pollutionData, t, origin]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setPollutionData(result.results);
+      } catch (error) {
+        toast.error(error.message, {
+          position: 'top-right',  // Toast position
+          autoClose: 3000,        // Auto-close time in milliseconds
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const toggleLayer = (layerId) => {
     setLayers((prev) =>
