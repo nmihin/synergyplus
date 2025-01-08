@@ -424,8 +424,13 @@ function Map() {
   
 
   const sendSMS = async () => {
+
+    const baseUrl = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3001' 
+    : 'https://synergyplus-yjck.vercel.app';
+    
     try {
-        const response = await axios.post(process.env.REACT_INFOBIP_ENV, { to, message });
+      const response = await axios.post(`${baseUrl}/send-sms`, { to, message });
         
         if (response.data.success) {
             toast.success('Poruka poslana!', {
