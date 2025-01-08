@@ -48,7 +48,7 @@ const FilterData = ({
         </div>
         {/* ORDER */}
         <div className="col-md-12 mt-4">
-          <h5>Odaberi sirovine</h5>
+          <h5>Odaberi sirovine ( tone )</h5>
           <Form>
             {materials.map((item, index) => (
               <Form.Group as={Row} key={index} className="mb-3 align-items-center pr-4">
@@ -78,7 +78,7 @@ const FilterData = ({
                     <Form.Control
                       type="number"
                       min="0"
-                      placeholder="kg"
+                      placeholder="tona"
                       onChange={(e) => handleMaterialChange(index, item.material, e.target.value)}
                     />
                   </InputGroup>
@@ -91,11 +91,11 @@ const FilterData = ({
                   Kreiraj optimiziranu rutu
                 </Button>
               </div>
-              <div className="col-md-12 z-10 mb-2">
+              {/* <div className="col-md-12 z-10 mb-2">
                 <Button className="w-full" variant="secondary" onClick={createOrder}>
                   Kreiraj narudžbu
                 </Button>
-              </div>
+              </div> */}
               <div className="col-md-12 z-10">
                 <Button className="w-full" variant="secondary" onClick={sendSMS}>
                   Pošalji rutu

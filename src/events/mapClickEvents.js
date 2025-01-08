@@ -1,5 +1,4 @@
 import mapboxgl from 'mapbox-gl';
-import shortid from 'shortid';
 
 export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
   let markers = []; // Track markers globally
@@ -15,10 +14,7 @@ export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
       const feature = features[0];
       const destination = feature.geometry.coordinates; // [lng, lat]
 
-      const shortId = shortid.generate();
       const googleMapsUrl = `https://www.google.com/maps/dir/${origin[1]},${origin[0]}/${destination[1]},${destination[0]}`;
-      const shortenedUrl = `https://short.url/${shortId}`;
-
       setMessage(`Link na rutu: ${googleMapsUrl}`);
 
       // Remove any existing markers before adding new ones
@@ -74,7 +70,7 @@ export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
             {
               type: 'Feature',
               geometry: { type: 'Point', coordinates: origin },
-              properties: { title: `Udaljenost do lokacije: ${distanceKm} km` },
+              properties: { title: `Udaljenost do lokacije i natrag: ${distanceKm} km` },
             },
           ];
           const labelGeoJSON = {
@@ -114,14 +110,12 @@ export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
         status = 'nema podataka',
         material = 'nema podataka',
         manager = 'nema podataka',
+        capacity = 'nema podataka',
         exploatation_fee,
         general_data,
         all_spaces_exploatation_fields = 'nema podataka',
       } = feature.properties;
 
-      const parsedExploatationFee = exploatation_fee
-        ? JSON.parse(exploatation_fee)
-        : {};
       const parsedGeneralData = general_data ? JSON.parse(general_data) : {};
 
       new mapboxgl.Popup()
@@ -131,6 +125,7 @@ export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
             <h6 class="text-lg font-semibold">${name}</h6>
             <p class="text-left mb-0"><strong>Status:</strong> ${status}</p>
             <p class="text-left mb-0"><strong>Materijal:</strong> ${material}</p>
+            <p class="text-left mb-0"><strong>Dostupno tona tjedno:</strong> ${capacity}</p>
             <p class="text-left mb-0"><strong>Upravitelj:</strong> ${manager}</p>
             <hr>
             <h6 class="text-lg font-semibold">Ovlaštenik</h6>
@@ -142,19 +137,6 @@ export function registerMapClickEvents(mapInstance, origin, t, setMessage) {
               ${parsedGeneralData.settlement || "nema podataka"}, 
               ${parsedGeneralData.state || "nema podataka"}
             </p>
-            <hr>
-            <h6 class="text-lg font-semibold">Naknade za eksploataciju mineralnih sirovina</h6>
-            ${parsedExploatationFee && Object.entries(parsedExploatationFee).length > 0
-              ? Object.entries(parsedExploatationFee).map(([year, fees]) => `
-                  <p class="text-left mb-0"><strong>${year}:</strong></p>
-                  <ul>
-                    <li><strong>Fiksni iznos:</strong> ${fees?.fixed_fee || "nema podataka"}</li>
-                    <li><strong>Varijabilni iznos:</strong> ${fees?.variable_fee || "nema podataka"}</li>
-                    <li><strong>Namjenski iznos:</strong> ${fees?.dedicated_amount || "nema podataka"}</li>
-                  </ul>
-                `).join('')
-              : "<p class='text-left mb-0'>Nema podataka.</p>"
-            }                         
             <hr>
             <p class="text-left mb-0">
               <strong>Svi istražni prostori i eksploatacijska polja:</strong> 

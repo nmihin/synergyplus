@@ -5,7 +5,6 @@ import FilterData from './FilterData';
 import { toast, ToastContainer } from "react-toastify";
 import layersConfig from '../config/layersConfig';
 import { registerMapClickEvents } from '../events/mapClickEvents';
-import shortid from 'shortid';
 import axios from 'axios';
 import "../assets/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
@@ -213,7 +212,7 @@ function Map() {
   const createOptimizedRoute = async () => {
     const mapInstance = mapInstanceRef.current;
   
-    if (selectedLocations.length === 0) {
+    if (!selectedLocations || selectedLocations.length === 0) {
       toast.error('Molim odaberite minimalno jednu sirovinu za kreiranje narudžbe.', {
         position: 'top-right',
         autoClose: 3000,
@@ -221,34 +220,98 @@ function Map() {
       return;
     }
   
+    // Filter out invalid or undefined entries
+    const filteredLocations = selectedLocations.filter((loc) => loc && loc.material && loc.quantity);
+    if (filteredLocations.length === 0) {
+      console.warn('No valid locations in selectedLocations.');
+      toast.error('Molim odaberite važeće lokacije za kreiranje narudžbe.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return;
+    }
+  
+    console.log('Filtered Locations:', filteredLocations);
+  
     // Fetch features from the 'stone' layer
     const stoneLayerId = 'stone';
     const stoneLayerFeatures = mapInstance.querySourceFeatures(stoneLayerId, {
-      sourceLayer: 'WebGis-16k5l9',
+      sourceLayer: 'JISMS_WebGis_podaci_updated-96gt90',
     });
   
-    // Add coordinates to selectedLocations based on material match
-    const updatedLocations = selectedLocations.map((location) => {
-      if (!location || !location.material) {
-        console.warn('Invalid location skipped:', location);
-        return location;
-      }
-      const matchedFeature = stoneLayerFeatures.find(
-        (feature) => feature.properties.material === location.material
-      );
-      if (matchedFeature) {
-        const [lng, lat] = matchedFeature.geometry.coordinates;
-        return { ...location, coordinates: [lng, lat] };
-      }
-      console.warn('No matching feature found for location:', location);
-      return location;
-    });
+    if (!stoneLayerFeatures || stoneLayerFeatures.length === 0) {
+      console.error('No features found in stoneLayerFeatures.');
+      toast.error('Nema dostupnih značajki u sloju.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return;
+    }
+  
+    console.log('Stone Layer Features:', stoneLayerFeatures);
+  
+    // Function to calculate distance using Haversine formula
+    const calculateDistance = (coords1, coords2) => {
+      const toRadians = (deg) => (deg * Math.PI) / 180;
+      const [lng1, lat1] = coords1;
+      const [lng2, lat2] = coords2;
+  
+      const R = 6371; // Earth's radius in km
+      const dLat = toRadians(lat2 - lat1);
+      const dLng = toRadians(lng2 - lng1);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRadians(lat1)) *
+          Math.cos(toRadians(lat2)) *
+          Math.sin(dLng / 2) *
+          Math.sin(dLng / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c; // Distance in km
+    };
+  
+    // Map and find the closest feature with sufficient capacity
+    const updatedLocations = filteredLocations
+      .map((location) => {
+        const validFeatures = stoneLayerFeatures.filter(
+          (feature) =>
+            feature.properties.material === location.material &&
+            feature.properties.capacity >= parseFloat(location.quantity) // Check capacity
+        );
+  
+        if (validFeatures.length > 0) {
+          // Find the closest feature to the origin
+          const closestFeature = validFeatures.reduce((closest, feature) => {
+            const featureCoords = feature.geometry.coordinates;
+            const distance = calculateDistance(location.coordinates || origin, featureCoords);
+  
+            if (!closest || distance < closest.distance) {
+              return { feature, distance };
+            }
+            return closest;
+          }, null);
+  
+          if (closestFeature) {
+            const { capacity } = closestFeature.feature.properties;
+            const [lng, lat] = closestFeature.feature.geometry.coordinates;
+            return { ...location, coordinates: [lng, lat], capacity };
+          }
+        } else {
+          console.warn('No matching features with sufficient capacity for location:', location);
+        }
+  
+        return null; // Exclude locations without sufficient capacity
+      })
+      .filter(Boolean);
   
     // Filter out locations without coordinates
+
+    console.log(updatedLocations)
+    console.log(selectedLocations)
+    console.log(stoneLayerFeatures)
+
     const validLocations = updatedLocations.filter((loc) => loc.coordinates);
-  
     if (validLocations.length === 0) {
-      toast.error('Nema pronađenih lokacija za odabrane sirovine.', {
+      toast.error('Nema pronađenih lokacija sa dovoljnim kapacitetom za odabrane sirovine.', {
         position: 'top-right',
         autoClose: 3000,
       });
@@ -276,13 +339,11 @@ function Map() {
         const googleMapsWaypoints = validLocations
           .map((loc) => `${loc.coordinates[1]},${loc.coordinates[0]}`)
           .join("/");
-
-        const shortId = shortid.generate();
+  
         const googleMapsUrl = `${googleMapsBaseUrl}${origin[1]},${origin[0]}/${googleMapsWaypoints}`;
-        const shortenedUrl = `https://short.url/${shortId}`;
   
         setMessage(`Link na rutu: ${googleMapsUrl}`);
-
+  
         if (mapInstance.getSource('route')) {
           mapInstance.getSource('route').setData(route);
         } else {
@@ -302,7 +363,7 @@ function Map() {
             },
           });
         }
-
+  
         const labelFeatures = [
           {
             type: 'Feature',
@@ -311,11 +372,11 @@ function Map() {
               coordinates: origin, // Place the label at the start of the route (origin)
             },
             properties: {
-              title: `Ukupna udaljenost: ${distanceKm} km`, // Display the total distance in kilometers
+              title: `Ukupna udaljenost dolokacija i natrag: ${distanceKm} km`, // Display the total distance in kilometers
             },
           },
         ];
-
+  
         const labelGeoJSON = {
           type: 'FeatureCollection',
           features: labelFeatures,
@@ -364,7 +425,7 @@ function Map() {
 
   const sendSMS = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/send-sms', { to, message });
+        const response = await axios.post(process.env.REACT_INFOBIP_ENV, { to, message });
         
         if (response.data.success) {
             toast.success('Poruka poslana!', {
