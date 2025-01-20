@@ -10,9 +10,9 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <Content />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </I18nextProvider>
   );
